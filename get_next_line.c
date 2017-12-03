@@ -14,7 +14,7 @@
 
 int			get_next_line(const int fd, char **line)
 {
-	static char **fd_data;
+	static t_ctrl *data_ctrl;
 	int res;
 	if (fd > 0)
 	{
@@ -24,7 +24,7 @@ int			get_next_line(const int fd, char **line)
 		line = NULL;
 	}
 		line = malloc(sizeof(char *));
-		res = ft_read_line(fd, line, fd_data);
+		res = ft_read_line(fd, line, data_ctrl);
 	}
 	else
 		res = fd;
@@ -32,7 +32,7 @@ int			get_next_line(const int fd, char **line)
 	return (res);
 }
 
-static int	ft_read_line(const int fd, char **line, char *data[])
+static int	ft_read_line(const int fd, char **line, t_ctrl *data_ctrl)
 {
 	char			tmp[BUFF_SIZE];
 	int	i[3];
@@ -46,22 +46,21 @@ static int	ft_read_line(const int fd, char **line, char *data[])
 		*line = malloc(sizeof(char) * i[0] * BUFF_SIZE);
 
 	}
-
+	if (tmp)
+	{
+		ft_stock_data(fd, tmp, data_ctrl);
+	}
+	free(tmp);
 	return (i[2]);
 }
 
-static void	ft_stock_data(const int fd, char *rest, char *data[])
+static void	ft_stock_data(const int fd, char *rest, t_ctrl *data_ctrl)
 {
-	int	i[2];
-
-	i[0] = 0;
-	while (data[i[0]][0] != -42)
-		i[0]++;
-	data[i[0]] = ft_strnew(ft_strlen(rest) + ft_strlen(ft_itoa(fd)) + 1 );
-	data[i[0]++][0] = 1;
-	ft_strcpy(data[i[0]++] + 1, ft_itoa(fd));
-	data[i[0]++][0] = 2;
-	
+	if (ft_create_item(data_ctrl, data_ctrl->last->row + 1) != NULL) {
+		data_ctrl->curr->content_ref = fd;
+		data_ctrl->curr->content = malloc(sizeof(char));
+		memcpy(data_ctrl->curr->content, rest, <#size_t __n#>);
+	}
 
 
 }

@@ -22,6 +22,26 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+typedef struct s_item
+{
+	void			*content;
+	int				content_ref;
+	int				row;
+
+	struct s_item	*prev;
+	struct s_item	*next;
+	struct s_ctrl	*ctrl;
+}				t_item;
+
+typedef struct s_ctrl
+{
+	int	nbItem;
+	struct s_item	*first;
+	struct s_item	*last;
+	struct s_item	*curr;
+} 				t_ctrl;
+
+t_item			*ft_create_item(t_ctrl *ctrl, int pos);
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);

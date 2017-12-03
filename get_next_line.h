@@ -20,7 +20,7 @@
 # include "libft/libft.h"
 
 int			get_next_line(const int fd, char **line);
-static int	ft_read_line(const int fd, char **line, char *data[]);
-static void	ft_stock_data(const int fd, char *rest, char *data[]);
+static int	ft_read_line(const int fd, char **line, t_ctrl *data_ctrl);
+static void	ft_stock_data(const int fd, char *rest, t_ctrl *data_ctrl);
 
 #endif
