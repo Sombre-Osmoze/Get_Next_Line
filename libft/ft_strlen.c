@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcusflorentin <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 04:16:48 by marcusflo         #+#    #+#             */
-/*   Updated: 2017/11/28 04:16:55 by marcusflo        ###   ########.fr       */
+/*   Created: 2017/11/16 12:19:12 by marcusflo         #+#    #+#             */
+/*   Updated: 2017/11/16 12:19:14 by marcusflo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <string.h>
 
-#define BUFF_SIZE 45
+size_t	ft_strlen(const char *s)
+{
+	size_t len;
 
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft/libft.h"
-
-int			get_next_line(const int fd, char **line);
-static int	ft_read_line(const int fd, char **line, char *data[]);
-static void	ft_stock_data(const int fd, char *rest, char *data[]);
-
-#endif
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	return (len);
+}

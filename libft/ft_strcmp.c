@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcusflorentin <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 04:16:48 by marcusflo         #+#    #+#             */
-/*   Updated: 2017/11/28 04:16:55 by marcusflo        ###   ########.fr       */
+/*   Created: 2017/11/17 15:00:29 by marcusflo         #+#    #+#             */
+/*   Updated: 2017/11/22 23:51:47 by mflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int	i;
 
-#define BUFF_SIZE 45
-
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft/libft.h"
-
-int			get_next_line(const int fd, char **line);
-static int	ft_read_line(const int fd, char **line, char *data[]);
-static void	ft_stock_data(const int fd, char *rest, char *data[]);
-
-#endif
+	i = 0;
+	while (s1[i] || s2[i])
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
+}

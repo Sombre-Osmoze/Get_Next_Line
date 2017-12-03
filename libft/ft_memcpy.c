@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcusflorentin <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 04:16:48 by marcusflo         #+#    #+#             */
-/*   Updated: 2017/11/28 04:16:55 by marcusflo        ###   ########.fr       */
+/*   Created: 2017/11/15 11:17:40 by marcusflo         #+#    #+#             */
+/*   Updated: 2017/11/15 11:17:43 by marcusflo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <string.h>
 
-#define BUFF_SIZE 45
+void				*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t			c;
+	unsigned char	*src_p;
+	unsigned char	*dst_p;
 
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft/libft.h"
-
-int			get_next_line(const int fd, char **line);
-static int	ft_read_line(const int fd, char **line, char *data[]);
-static void	ft_stock_data(const int fd, char *rest, char *data[]);
-
-#endif
+	c = 0;
+	src_p = (unsigned char *)src;
+	dst_p = dst;
+	while (c < n)
+	{
+		dst_p[c] = src_p[c];
+		c++;
+	}
+	return (dst);
+}

@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcusflorentin <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 04:16:48 by marcusflo         #+#    #+#             */
-/*   Updated: 2017/11/28 04:16:55 by marcusflo        ###   ########.fr       */
+/*   Created: 2017/11/14 20:22:47 by marcusflo         #+#    #+#             */
+/*   Updated: 2017/11/14 20:28:50 by marcusflo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <string.h>
 
-#define BUFF_SIZE 45
+void		*ft_memset(void *b, int c, size_t len)
+{
+	size_t	i;
+	char	*b_p;
 
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft/libft.h"
-
-int			get_next_line(const int fd, char **line);
-static int	ft_read_line(const int fd, char **line, char *data[]);
-static void	ft_stock_data(const int fd, char *rest, char *data[]);
-
-#endif
+	b_p = b;
+	i = 0;
+	while (i < len)
+		b_p[i++] = (unsigned char)c;
+	return (b);
+}

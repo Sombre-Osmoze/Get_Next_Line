@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcusflorentin <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 04:16:48 by marcusflo         #+#    #+#             */
-/*   Updated: 2017/11/28 04:16:55 by marcusflo        ###   ########.fr       */
+/*   Created: 2017/11/22 17:15:10 by marcusflo         #+#    #+#             */
+/*   Updated: 2017/11/22 17:15:13 by marcusflo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <unistd.h>
 
-#define BUFF_SIZE 45
+static void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
 
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft/libft.h"
+static void	next(long nb)
+{
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb = nb * -1;
+	}
+	if (nb >= 10)
+	{
+		next(nb / 10);
+		next(nb % 10);
+	}
+	else
+		ft_putchar(nb + 48);
+}
 
-int			get_next_line(const int fd, char **line);
-static int	ft_read_line(const int fd, char **line, char *data[]);
-static void	ft_stock_data(const int fd, char *rest, char *data[]);
+void		ft_putnbr(int nb)
+{
+	long trans;
 
-#endif
+	trans = nb;
+	next(trans);
+}

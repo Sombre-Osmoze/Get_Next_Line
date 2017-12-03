@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcusflorentin <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 04:16:48 by marcusflo         #+#    #+#             */
-/*   Updated: 2017/11/28 04:16:55 by marcusflo        ###   ########.fr       */
+/*   Created: 2017/11/16 19:40:36 by marcusflo         #+#    #+#             */
+/*   Updated: 2017/11/16 19:40:43 by marcusflo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <stdlib.h>
 
-#define BUFF_SIZE 45
+char	*ft_strrchr(const char *s, int c)
+{
+	char	*buf;
 
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft/libft.h"
-
-int			get_next_line(const int fd, char **line);
-static int	ft_read_line(const int fd, char **line, char *data[]);
-static void	ft_stock_data(const int fd, char *rest, char *data[]);
-
-#endif
+	buf = NULL;
+	while (*s != '\0')
+	{
+		if (*s == c)
+			buf = (char *)s;
+		s++;
+	}
+	if (c == '\0')
+		return ((char *)s);
+	return (buf);
+}

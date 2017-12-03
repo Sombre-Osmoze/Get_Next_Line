@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcusflorentin <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 04:16:48 by marcusflo         #+#    #+#             */
-/*   Updated: 2017/11/28 04:16:55 by marcusflo        ###   ########.fr       */
+/*   Created: 2017/11/16 12:25:34 by marcusflo         #+#    #+#             */
+/*   Updated: 2017/11/16 12:25:35 by marcusflo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <string.h>
+#include <stdlib.h>
 
-#define BUFF_SIZE 45
+char	*ft_strdup(const char *s1)
+{
+	char	*cpy;
+	size_t	i;
 
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft/libft.h"
-
-int			get_next_line(const int fd, char **line);
-static int	ft_read_line(const int fd, char **line, char *data[]);
-static void	ft_stock_data(const int fd, char *rest, char *data[]);
-
-#endif
+	i = 0;
+	cpy = NULL;
+	while (s1[i] != '\0')
+		i++;
+	cpy = malloc(sizeof(char) * i + 1);
+	if (cpy != NULL)
+	{
+		i = 0;
+		while (s1[i] != '\0')
+		{
+			cpy[i] = s1[i];
+			i++;
+		}
+		cpy[i] = '\0';
+	}
+	return (cpy);
+}

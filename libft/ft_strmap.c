@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcusflorentin <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 04:16:48 by marcusflo         #+#    #+#             */
-/*   Updated: 2017/11/28 04:16:55 by marcusflo        ###   ########.fr       */
+/*   Created: 2017/11/20 10:09:44 by marcusflo         #+#    #+#             */
+/*   Updated: 2017/11/20 10:09:51 by marcusflo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <stdlib.h>
 
-#define BUFF_SIZE 45
+char	*ft_strmap(const char *s, char (*f)(char))
+{
+	char	*new_str;
+	int		i;
 
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft/libft.h"
-
-int			get_next_line(const int fd, char **line);
-static int	ft_read_line(const int fd, char **line, char *data[]);
-static void	ft_stock_data(const int fd, char *rest, char *data[]);
-
-#endif
+	new_str = NULL;
+	if (s != NULL && (f) != NULL)
+	{
+		i = 0;
+		while (s[i] != '\0')
+			i++;
+		new_str = malloc(sizeof(char) * i + 1);
+		i = 0;
+		if (new_str != NULL)
+		{
+			while (s[i] != '\0')
+			{
+				new_str[i] = (f)(s[i]);
+				i++;
+			}
+			new_str[i] = '\0';
+		}
+	}
+	return (new_str);
+}
