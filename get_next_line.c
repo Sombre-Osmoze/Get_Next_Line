@@ -46,20 +46,20 @@ static int	ft_read_line(const int fd, char **line, t_ctrl *data_ctrl)
 		*line = malloc(sizeof(char) * i[0] * BUFF_SIZE);
 
 	}
-	if (tmp)
+	if (i[0] < BUFF_SIZE)
 	{
-		ft_stock_data(fd, tmp, data_ctrl);
+		ft_stock_data(fd, tmp, data_ctrl, BUFF_SIZE - i[0]);
 	}
 	free(tmp);
 	return (i[2]);
 }
 
-static void	ft_stock_data(const int fd, char *rest, t_ctrl *data_ctrl)
+static void	ft_stock_data(const int fd, char *rest, t_ctrl *data_ctrl, int end)
 {
 	if (ft_create_item(data_ctrl, data_ctrl->last->row + 1) != NULL) {
 		data_ctrl->curr->content_ref = fd;
 		data_ctrl->curr->content = malloc(sizeof(char));
-		memcpy(data_ctrl->curr->content, rest, <#size_t __n#>);
+		memcpy(data_ctrl->curr->content, rest, end);
 	}
 
 
