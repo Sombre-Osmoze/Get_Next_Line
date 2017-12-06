@@ -26,7 +26,7 @@ t_item	*ft_create_item(t_ctrl *ctrl, int pos)
 		new_item->content = NULL;
 		new_item->content_ref = 0;
 		new_item->content_size = 0;
-		new_item->row = new_item->next->row;
+		new_item->row = pos;
 		new_item->prev = tmp;
 		new_item->next = tmp->next;
 		new_item->ctrl = ctrl;
