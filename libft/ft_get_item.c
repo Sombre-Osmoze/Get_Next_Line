@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stricpy.c                                       :+:      :+:    :+:   */
+/*   ft_get_item.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflorent <mflorent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/30/11 16:39:00 by mflorent          #+#    #+#             */
-/*   Updated: 2017/30/11 16:39:00 by mflorent         ###   ########.fr       */
+/*   Created: 04/12/2017 10:12:00 by mflorent          #+#    #+#             */
+/*   Updated: 04/12/2017 10:12:00 by mflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stdlib.h>
+#include "libft.h"
 
-int	ft_stricpy(char *dst, const char *src)
+t_item	*ft_get_item(t_ctrl *ctrl, int pos)
 {
-	size_t	i;
+	t_item	*tmp;
 
-	i = 0;
-	while (src[i] != '\0')
+	tmp = ctrl->first;
+	while (tmp != NULL)
 	{
-		dst[i] = src[i];
-		i++;
+		if (tmp->row == pos)
+		{
+			ctrl->curr = tmp;
+			return (tmp);
+		}
 	}
-	dst[i] = '\0';
-	return (i);
+	return (tmp);
 }
-

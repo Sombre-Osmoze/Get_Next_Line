@@ -15,6 +15,7 @@ NAME	=	libft.a
 SRC		=	ft_atoi.c \
 			ft_bzero.c \
 			ft_create_item.c \
+			ft_get_item.c \
 			ft_isalnum.c \
 			ft_isalpha.c \
 			ft_isascii.c \
@@ -45,6 +46,8 @@ SRC		=	ft_atoi.c \
 			ft_putnbr_fd.c \
 			ft_putstr.c \
 			ft_putstr_fd.c \
+			ft_rm_item.c \
+			ft_search_item.c \
 			ft_strcat.c \
 			ft_strchr.c \
 			ft_strclr.c \

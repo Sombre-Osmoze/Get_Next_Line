@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stricpy.c                                       :+:      :+:    :+:   */
+/*   ft_search_item.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflorent <mflorent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/30/11 16:39:00 by mflorent          #+#    #+#             */
-/*   Updated: 2017/30/11 16:39:00 by mflorent         ###   ########.fr       */
+/*   Created: 2017/04/12 09:43:00 by mflorent          #+#    #+#             */
+/*   Updated: 2017/04/12 09:43:00 by mflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stdlib.h>
+#include "libft.h"
 
-int	ft_stricpy(char *dst, const char *src)
+t_item	*ft_search_item(t_ctrl *ctrl, const int ref)
 {
-	size_t	i;
+	t_item	*tmp;
 
-	i = 0;
-	while (src[i] != '\0')
+	tmp = ctrl->first;
+	while (tmp != NULL)
 	{
-		dst[i] = src[i];
-		i++;
+		if (tmp->content_ref == ref)
+		{
+			ctrl->curr = tmp;
+			return (tmp);
+		}
+		tmp = tmp->next;
 	}
-	dst[i] = '\0';
-	return (i);
+	return (tmp);
 }
-

@@ -1,28 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stricpy.c                                       :+:      :+:    :+:   */
+/*   ft_list_append.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflorent <mflorent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/30/11 16:39:00 by mflorent          #+#    #+#             */
-/*   Updated: 2017/30/11 16:39:00 by mflorent         ###   ########.fr       */
+/*   Created: 2004/12 12:10:00 by mflorent          #+#    #+#             */
+/*   Updated: 04/12/2017 12:10:00 by mflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <string.h>
-
-int	ft_stricpy(char *dst, const char *src)
-{
-	size_t	i;
-
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (i);
-}
 

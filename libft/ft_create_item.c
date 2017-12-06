@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft.h"
 
 t_item	*ft_create_item(t_ctrl *ctrl, int pos)
 {
 	t_item	*tmp;
 	t_item	*new_item;
 
-	new_item = NULL;
 	tmp = ctrl->first;
 	while (tmp->row < pos - 1)
 		tmp = tmp->next;
@@ -25,11 +25,13 @@ t_item	*ft_create_item(t_ctrl *ctrl, int pos)
 	{
 		new_item->content = NULL;
 		new_item->content_ref = 0;
+		new_item->content_size = 0;
 		new_item->row = new_item->next->row;
 		new_item->prev = tmp;
 		new_item->next = tmp->next;
 		new_item->ctrl = ctrl;
 		ctrl->curr = new_item;
+		ctrl->nbItem = ctrl->nbItem + 1;
 		tmp->next = new_item;
 		tmp = new_item->next;
 		while (tmp != NULL)
