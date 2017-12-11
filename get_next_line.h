@@ -21,7 +21,7 @@
 
 int			get_next_line(const int fd, char **line);
 static int	ft_read_line(const int fd, char *line, t_ctrl *data_ctrl);
-static void	ft_stock_data(const int fd, char *rest, t_ctrl *data_ctrl, int end);
+static void	ft_stock_data(const int fd, char *rest, t_ctrl *ctrl, size_t end);
 static char	*ft_get_buff(const int fd, char *line, t_ctrl *data_ctrl);
 
 #endif

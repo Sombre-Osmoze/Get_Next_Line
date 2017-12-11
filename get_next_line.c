@@ -12,17 +12,16 @@
 
 #include "get_next_line.h"
 
-////////
-#include <stdio.h>
-////////
-
 int			get_next_line(const int fd, char **line)
 {
-	static t_ctrl	*data_ctrl;
+	static t_ctrl	*ctrl;
 	int				res;
 	if (fd > 0)
 	{
-		res = ft_read_line(fd, NULL, data_ctrl);
+		if (ft_search_item(ctrl, (const void *)&fd, &ft_int_cmp))
+			*line = ft_memjoin(NULL, 0, ctrl->last_ac->content,
+							   ctrl->last_ac->content_size);
+		res = ft_read_line(fd, NULL, ctrl);
 	}
 	else
 		res = fd;
@@ -33,48 +32,33 @@ int			get_next_line(const int fd, char **line)
 static int	ft_read_line(const int fd, char *line, t_ctrl *data_ctrl)
 {
 	char			tmp[BUFF_SIZE];
-	int				i[3];
+	size_t			i[3];
 
-	i[0] = 1;
-	while (i[0] < 3)
-		i[i[0]++] = 0;
-//	line = ft_get_buff(fd, line, data_ctrl);
-	while (read(fd, tmp, BUFF_SIZE))
+	ft_bzero(i, 3);
+	i[1] = 1;
+	while ((i[0] = read(fd, tmp, BUFF_SIZE)) > 0 && i[1])
 	{
-
-		/////
-		printf("%s", tmp);
-		/////
-	}
-//	if (i[0] < BUFF_SIZE)
-//	{
-//		ft_stock_data(fd, tmp, data_ctrl, BUFF_SIZE - i[0]);
-//	}
-	return (i[2]);
-}
-
-static void	ft_stock_data(const int fd, char *rest, t_ctrl *data_ctrl, int end)
-{
-	if (ft_create_item(data_ctrl, data_ctrl->last->row + 1) != NULL) {
-		data_ctrl->curr->content_ref = fd;
-		data_ctrl->curr->content = malloc(sizeof(char));
-		data_ctrl->curr->content_size = end;
-		memcpy(data_ctrl->curr->content, rest, end);
-
-	}
-
-
-}
-
-static char	*ft_get_buff(const int fd, char *line, t_ctrl *data_ctrl)
-{
-	if (ft_search_item(data_ctrl, fd) != NULL)
-	{
-		line = malloc(sizeof(char) * data_ctrl->curr->content_size + 1);
+		i[2] = ft_memicmp(tmp, "\n", BUFF_SIZE);
 		
+		
+		
+		
+		
+	}
+	if (i[0] && i[2] < BUFF_SIZE)
+	{
+		ft_stock_data(fd, tmp, data_ctrl, BUFF_SIZE - i[0]);
+	}
+	return ((int)i[2]);
+}
 
+static void	ft_stock_data(const int fd, char *rest, t_ctrl *ctrl, size_t end)
+{
+	if (ft_create_item(ctrl, ctrl->tail->row + 1) != NULL) {
+		ctrl->last_ac->content_ref = fd;
+		ctrl->last_ac->content = ft_memjoin(rest, end, NULL, 0);
+		ctrl->last_ac->content_size = end;
 	}
 
 
-	return (line);
 }

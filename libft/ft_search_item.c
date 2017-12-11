@@ -13,16 +13,17 @@
 #include <stdlib.h>
 #include "libft.h"
 
-t_item	*ft_search_item(t_ctrl *ctrl, const int ref)
+t_item	*ft_search_item(t_ctrl *ctrl, const void *ref,
+						int (*cmp)(const void *cmp, const void *ref))
 {
 	t_item	*tmp;
 
-	tmp = ctrl->first;
+	tmp = ctrl->head;
 	while (tmp != NULL)
 	{
-		if (tmp->content_ref == ref)
+		if ((cmp)(tmp->content_ref, ref))
 		{
-			ctrl->curr = tmp;
+			ctrl->last_ac = tmp;
 			return (tmp);
 		}
 		tmp = tmp->next;

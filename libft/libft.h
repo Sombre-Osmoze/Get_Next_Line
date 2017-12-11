@@ -22,11 +22,11 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-typedef struct s_item
+typedef struct	s_item
 {
 	void			*content;
-	int				content_ref;
-	int				content_size;
+	void			*content_ref;
+	size_t			content_size;
 	int				row;
 
 	struct s_item	*prev;
@@ -34,16 +34,18 @@ typedef struct s_item
 	struct s_ctrl	*ctrl;
 }				t_item;
 
-typedef struct s_ctrl
+typedef struct	s_ctrl
 {
-	int	nbItem;
-	struct s_item	*first;
-	struct s_item	*last;
+	int				nb_item;
+	struct s_item	*head;
+	struct s_item	*tail;
 	struct s_item	*curr;
-} 				t_ctrl;
+	struct s_item	*last_ac;
+}				t_ctrl;
 
 t_item			*ft_get_item(t_ctrl *ctrl, int pos);
-t_item			*ft_search_item(t_ctrl *ctrl, const int ref);
+t_item			*ft_search_item(t_ctrl *c, const void *r,
+								int (*cmp)(const void *cmp, const void *ref));
 t_item			*ft_create_item(t_ctrl *ctrl, int pos);
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
@@ -110,5 +112,7 @@ void			ft_putnbr(int nb);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int				ft_stricpy(char *dst, const char *src);
+unsigned char	*ft_memjoin(void *hd, size_t hd_size, void *tl, size_t tl_size);
+int				ft_int_cmp(const void *cmp, const void *ref);
 
 #endif

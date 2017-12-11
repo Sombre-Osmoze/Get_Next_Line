@@ -25,4 +25,3 @@ int	ft_stricpy(char *dst, const char *src)
 	dst[i] = '\0';
 	return (i);
 }
-

@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_item.c                                      :+:      :+:    :+:   */
+/*   ft_int_cmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mflorent <mflorent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mflorent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/12 10:12:00 by mflorent          #+#    #+#             */
-/*   Updated: 2017/04/12 10:12:00 by mflorent         ###   ########.fr       */
+/*   Created: 2017/12/11 22:03:07 by mflorent          #+#    #+#             */
+/*   Updated: 2017/12/11 22:03:10 by mflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
-
-t_item	*ft_get_item(t_ctrl *ctrl, int pos)
+int	ft_int_cmp(const void *cmp, const void *ref)
 {
-	t_item	*tmp;
-
-	tmp = ctrl->head;
-	while (tmp != NULL)
-	{
-		if (tmp->row == pos)
-		{
-			ctrl->last_ac = tmp;
-			return (tmp);
-		}
-	}
-	return (tmp);
+	int cmp_p;
+	int ref_p;
+	
+	cmp_p = (int)cmp;
+	ref_p = (int)ref;
+	
+	if (cmp_p == ref_p)
+		return (1);
+	else
+		return (0);
 }

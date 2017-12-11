@@ -16,6 +16,7 @@ SRC		=	ft_atoi.c \
 			ft_bzero.c \
 			ft_create_item.c \
 			ft_get_item.c \
+			ft_int_cmp.c \
 			ft_isalnum.c \
 			ft_isalpha.c \
 			ft_isascii.c \
@@ -35,6 +36,7 @@ SRC		=	ft_atoi.c \
 			ft_memcpy.c \
 			ft_memdel.c \
 			ft_memicmp.c \
+			ft_memjoin.c \
 			ft_memmove.c \
 			ft_memset.c \
 			ft_memswp.c \
@@ -80,6 +82,7 @@ SRC		=	ft_atoi.c \
 			ft_strtrim.c \
 			ft_tolower.c \
 			ft_toupper.c \
+
 
 
 OBJS	=	$(SRC:.c=.o)

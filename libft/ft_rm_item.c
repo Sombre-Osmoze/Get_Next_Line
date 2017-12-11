@@ -23,16 +23,15 @@ t_item	*ft_rm_item(t_ctrl *ctrl, int pos)
 		free(tmp->content);
 		tmp->content = NULL;
 		tmp->row = -1;
-		tmp->content_ref = -1;
 		tmp->prev->next = tmp->next;
 		tmp->next->prev = tmp->prev;
-		ctrl->curr = tmp->next;
+		ctrl->last_ac = tmp->next;
 		tmp->ctrl = NULL;
 		tmp->prev = NULL;
 		tmp->next = NULL;
 		free(tmp);
-		ctrl->nbItem = ctrl->nbItem - 1;
-		tmp = ctrl->curr;
+		ctrl->nb_item = ctrl->nb_item - 1;
+		tmp = ctrl->last_ac;
 		while (tmp != NULL)
 		{
 			tmp->row = tmp->row - 1;

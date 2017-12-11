@@ -12,14 +12,18 @@
 
 #include <string.h>
 
-size_t	ft_memicmp(const char *s1, const char *s2, size_t len)
+size_t	ft_memicmp(const void *s1, const void *s2, size_t len)
 {
+	unsigned char	*p_s1;
+	unsigned char	*p_s2;
 	size_t	i;
 
 	i = 0;
+	p_s1 = (unsigned char *)s1;
+	p_s2 = (unsigned char *)s2;
 	while (i < len)
 	{
-		if (s1[i] != s2[i])
+		if (p_s1[i] != p_s2[i])
 			return (i);
 		i++;
 	}

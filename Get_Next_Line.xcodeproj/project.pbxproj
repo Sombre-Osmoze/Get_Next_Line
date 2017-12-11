@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45E52B2B1FDEF6BF0046D7BA /* ft_memjoin.c in Sources */ = {isa = PBXBuildFile; fileRef = 45E52B2A1FDEF6BF0046D7BA /* ft_memjoin.c */; settings = {COMPILER_FLAGS = "-Wall -Wextra -Weverything"; }; };
 		ED2099621FD0466400F45D1D /* libft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2099331FD0461100F45D1D /* libft.a */; };
 		ED2099631FD0485700F45D1D /* File.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED407B431FCD5E36005FF1D5 /* File.txt */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		ED4DAFCB1FCD0BD800F5B191 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = ED4DAFCA1FCD0BD800F5B191 /* main.c */; };
-		ED4DAFCE1FCD0C6B00F5B191 /* get_next_line.c in Sources */ = {isa = PBXBuildFile; fileRef = ED4DAFCD1FCD0C6B00F5B191 /* get_next_line.c */; };
-		EDC61A1B1FD5481A0010127B /* ft_rm_item.c in Sources */ = {isa = PBXBuildFile; fileRef = EDC61A1A1FD5481A0010127B /* ft_rm_item.c */; };
-		EDC61A1F1FD564A50010127B /* ft_list_append.c in Sources */ = {isa = PBXBuildFile; fileRef = EDC61A1E1FD564A50010127B /* ft_list_append.c */; };
+		ED4DAFCE1FCD0C6B00F5B191 /* get_next_line.c in Sources */ = {isa = PBXBuildFile; fileRef = ED4DAFCD1FCD0C6B00F5B191 /* get_next_line.c */; settings = {COMPILER_FLAGS = "-Wall -Wextra -Weverything"; }; };
+		EDC61A1B1FD5481A0010127B /* ft_rm_item.c in Sources */ = {isa = PBXBuildFile; fileRef = EDC61A1A1FD5481A0010127B /* ft_rm_item.c */; settings = {COMPILER_FLAGS = "-Wall -Wextra -Weverything"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		45BAD9F41FDF29F90023E35B /* ft_int_cmp.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ft_int_cmp.c; sourceTree = "<group>"; };
+		45E52B2A1FDEF6BF0046D7BA /* ft_memjoin.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ft_memjoin.c; sourceTree = "<group>"; };
 		ED2098711FD02BA900F45D1D /* get_next_line.fr.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = get_next_line.fr.pdf; sourceTree = "<group>"; };
 		ED2098941FD0455F00F45D1D /* auteur */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = auteur; sourceTree = "<group>"; };
 		ED2098961FD0455F00F45D1D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -110,7 +112,6 @@
 		EDC61A181FD5424F0010127B /* ft_search_item.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ft_search_item.c; sourceTree = "<group>"; };
 		EDC61A1A1FD5481A0010127B /* ft_rm_item.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ft_rm_item.c; sourceTree = "<group>"; };
 		EDC61A1C1FD548FE0010127B /* ft_get_item.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ft_get_item.c; sourceTree = "<group>"; };
-		EDC61A1E1FD564A50010127B /* ft_list_append.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ft_list_append.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				EDC61A1C1FD548FE0010127B /* ft_get_item.c */,
-				EDC61A1E1FD564A50010127B /* ft_list_append.c */,
 				ED20992C1FD0461100F45D1D /* Makefile */,
 				ED2099561FD0461200F45D1D /* auteur */,
 				ED2099331FD0461100F45D1D /* libft.a */,
@@ -201,6 +201,8 @@
 				ED2099601FD0461200F45D1D /* ft_strcmp.c */,
 				ED2099641FD05D9E00F45D1D /* ft_stricpy.c */,
 				EDC61A181FD5424F0010127B /* ft_search_item.c */,
+				45E52B2A1FDEF6BF0046D7BA /* ft_memjoin.c */,
+				45BAD9F41FDF29F90023E35B /* ft_int_cmp.c */,
 			);
 			path = libft;
 			sourceTree = "<group>";
@@ -303,7 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED4DAFCB1FCD0BD800F5B191 /* main.c in Sources */,
-				EDC61A1F1FD564A50010127B /* ft_list_append.c in Sources */,
+				45E52B2B1FDEF6BF0046D7BA /* ft_memjoin.c in Sources */,
 				EDC61A1B1FD5481A0010127B /* ft_rm_item.c in Sources */,
 				ED4DAFCE1FCD0C6B00F5B191 /* get_next_line.c in Sources */,
 			);
