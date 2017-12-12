@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45A0F98A1FDF565B006B3941 /* ft_search_item.c in Sources */ = {isa = PBXBuildFile; fileRef = EDC61A181FD5424F0010127B /* ft_search_item.c */; };
+		45A0F98C1FDF57F8006B3941 /* ft_init_ctrl.c in Sources */ = {isa = PBXBuildFile; fileRef = 45A0F98B1FDF57F8006B3941 /* ft_init_ctrl.c */; };
+		45A0F98D1FDF59B6006B3941 /* ft_create_item.c in Sources */ = {isa = PBXBuildFile; fileRef = EDA99CAA1FD4BAA300493819 /* ft_create_item.c */; };
+		45A0F9C71FDF7EB9006B3941 /* ft_abs.c in Sources */ = {isa = PBXBuildFile; fileRef = 45A0F9C61FDF7EB9006B3941 /* ft_abs.c */; };
+		45A0F9C81FDF9B0D006B3941 /* auteur in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED2098941FD0455F00F45D1D /* auteur */; };
+		45A0F9CA1FDF9D6C006B3941 /* ft_memichr.c in Sources */ = {isa = PBXBuildFile; fileRef = 45A0F9C91FDF9D6C006B3941 /* ft_memichr.c */; };
 		45E52B2B1FDEF6BF0046D7BA /* ft_memjoin.c in Sources */ = {isa = PBXBuildFile; fileRef = 45E52B2A1FDEF6BF0046D7BA /* ft_memjoin.c */; settings = {COMPILER_FLAGS = "-Wall -Wextra -Weverything"; }; };
 		ED2099621FD0466400F45D1D /* libft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2099331FD0461100F45D1D /* libft.a */; };
 		ED2099631FD0485700F45D1D /* File.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED407B431FCD5E36005FF1D5 /* File.txt */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -23,12 +29,16 @@
 			dstSubfolderSpec = 16;
 			files = (
 				ED2099631FD0485700F45D1D /* File.txt in CopyFiles */,
+				45A0F9C81FDF9B0D006B3941 /* auteur in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		45A0F98B1FDF57F8006B3941 /* ft_init_ctrl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ft_init_ctrl.c; sourceTree = "<group>"; };
+		45A0F9C61FDF7EB9006B3941 /* ft_abs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ft_abs.c; sourceTree = "<group>"; };
+		45A0F9C91FDF9D6C006B3941 /* ft_memichr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ft_memichr.c; sourceTree = "<group>"; };
 		45BAD9F41FDF29F90023E35B /* ft_int_cmp.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ft_int_cmp.c; sourceTree = "<group>"; };
 		45E52B2A1FDEF6BF0046D7BA /* ft_memjoin.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ft_memjoin.c; sourceTree = "<group>"; };
 		ED2098711FD02BA900F45D1D /* get_next_line.fr.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = get_next_line.fr.pdf; sourceTree = "<group>"; };
@@ -203,6 +213,9 @@
 				EDC61A181FD5424F0010127B /* ft_search_item.c */,
 				45E52B2A1FDEF6BF0046D7BA /* ft_memjoin.c */,
 				45BAD9F41FDF29F90023E35B /* ft_int_cmp.c */,
+				45A0F98B1FDF57F8006B3941 /* ft_init_ctrl.c */,
+				45A0F9C61FDF7EB9006B3941 /* ft_abs.c */,
+				45A0F9C91FDF9D6C006B3941 /* ft_memichr.c */,
 			);
 			path = libft;
 			sourceTree = "<group>";
@@ -304,10 +317,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45A0F9CA1FDF9D6C006B3941 /* ft_memichr.c in Sources */,
+				45A0F9C71FDF7EB9006B3941 /* ft_abs.c in Sources */,
+				45A0F98C1FDF57F8006B3941 /* ft_init_ctrl.c in Sources */,
 				ED4DAFCB1FCD0BD800F5B191 /* main.c in Sources */,
 				45E52B2B1FDEF6BF0046D7BA /* ft_memjoin.c in Sources */,
 				EDC61A1B1FD5481A0010127B /* ft_rm_item.c in Sources */,
 				ED4DAFCE1FCD0C6B00F5B191 /* get_next_line.c in Sources */,
+				45A0F98D1FDF59B6006B3941 /* ft_create_item.c in Sources */,
+				45A0F98A1FDF565B006B3941 /* ft_search_item.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,7 +380,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -411,7 +429,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
@@ -453,7 +471,7 @@
 				ED4DAFC21FCD0AD700F5B191 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		ED4DAFC31FCD0AD700F5B191 /* Build configuration list for PBXNativeTarget "Get_Next_Line" */ = {
 			isa = XCConfigurationList;
@@ -462,7 +480,7 @@
 				ED4DAFC51FCD0AD700F5B191 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

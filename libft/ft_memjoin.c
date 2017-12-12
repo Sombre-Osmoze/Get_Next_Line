@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-unsigned char	*ft_memjoin(void *head, size_t head_size, void *tail, size_t tail_size)
+void	*ft_memjoin(void *head, size_t head_size, void *tail, size_t tail_size)
 {
 	unsigned char	*body;
 	

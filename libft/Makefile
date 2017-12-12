@@ -12,10 +12,12 @@
 
 NAME	=	libft.a
 
-SRC		=	ft_atoi.c \
+SRC		=				ft_abs.c \
+			ft_atoi.c \
 			ft_bzero.c \
 			ft_create_item.c \
 			ft_get_item.c \
+			ft_init_ctrl.c \
 			ft_int_cmp.c \
 			ft_isalnum.c \
 			ft_isalpha.c \
@@ -35,6 +37,7 @@ SRC		=	ft_atoi.c \
 			ft_memcmp.c \
 			ft_memcpy.c \
 			ft_memdel.c \
+			ft_memichr.c \
 			ft_memicmp.c \
 			ft_memjoin.c \
 			ft_memmove.c \
