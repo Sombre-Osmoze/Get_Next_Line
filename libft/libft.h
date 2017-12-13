@@ -114,7 +114,8 @@ void			ft_putnbr(int nb);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int				ft_stricpy(char *dst, const char *src);
-void			*ft_memjoin(void *hd, size_t hd_size, void *tl, size_t tl_size);
+void			*ft_memjoin(void *head, size_t head_size,
+							void *tail, size_t tail_size);
 int				ft_int_cmp(const void *cmp, const void *ref, int i);
 size_t			ft_abs(long long nb);
 size_t			ft_memichr(const void *src, char chr, size_t len);

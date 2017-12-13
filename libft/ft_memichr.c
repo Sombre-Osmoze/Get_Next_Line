@@ -22,7 +22,7 @@ size_t	ft_memichr(const void *src, char chr, size_t len)
 	p_src = (unsigned char *)src;
 	while (i < len)
 	{
-		if (p_src[i] == (unsigned char)chr)
+		if (*p_src == (unsigned char)chr)
 			return (i);
 		i++;
 		p_src++;

@@ -17,12 +17,17 @@ void	*ft_memjoin(void *head, size_t head_size, void *tail, size_t tail_size)
 {
 	unsigned char	*body;
 
-	body = NULL;
 	body = ft_memalloc(sizeof(unsigned char) * (head_size + tail_size));
 	if (body)
 	{
-		ft_memmove(body, head, head_size);
-		ft_memmove(body + head_size - 1, tail, tail_size);
+		if (head)
+			ft_memmove(body, head, head_size);
+		if (tail)
+			ft_memmove(body + head_size - 1, tail, tail_size);
+		if (head)
+			free(head);
+		if (tail)
+			free(tail);
 	}
 	return (body);
 }

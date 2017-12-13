@@ -30,19 +30,15 @@ static void	ft_stock_data(int fd, char *rest, t_ctrl *ctrl, size_t end)
 
 static int	ft_read_line(const int fd, char **line, t_ctrl *data_ctrl)
 {
-	char			tmp[BUFF_SIZE];
-	size_t			i[3];
+	char			tmp[BUFF_SIZE + 1];
+	size_t			i[4];
 
-	ft_bzero(i, 3);
+	ft_bzero(i, 4);
 	i[1] = 1;
 	while ((i[0] = read(fd, tmp, BUFF_SIZE)) > 0 && i[1])
 	{
 		i[2] = ft_memichr(tmp, '\n', BUFF_SIZE);
-
-
-
-
-
+		ft_memjoin(line, i[3], tmp, i[2] + 1);
 	}
 	if (i[2] < BUFF_SIZE)
 	{
@@ -90,9 +86,6 @@ int			get_next_line(const int fd, char **line)
 	}
 	else
 		res = fd;
-
-
-
 
 	return (res);
 }
