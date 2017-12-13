@@ -42,7 +42,8 @@ static int	ft_read_line(const int fd, char **line, t_ctrl *ctrl, size_t *size)
 		i[1] = ft_memichr(tmp, '\n', BUFF_SIZE);
 		if (i[1] == (size_t)-1)
 			buff = ft_memjoin(*line, i[2], tmp, i[0]);
-		buff = ft_memjoin(*line, i[2], tmp, i[1]);
+		else
+			buff = ft_memjoin(*line, i[2], tmp, i[1]);
 		if (*line)
 			free(*line);
 		*line = (char *)buff;
