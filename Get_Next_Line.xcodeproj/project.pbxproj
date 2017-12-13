@@ -12,6 +12,8 @@
 		450D22AD1FE1711D00E668F3 /* README.md in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED2098961FD0455F00F45D1D /* README.md */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		450D22AE1FE1711F00E668F3 /* get_next_line.fr.pdf in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED2098711FD02BA900F45D1D /* get_next_line.fr.pdf */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		450D22AF1FE17ADA00E668F3 /* ft_memjoin.c in Sources */ = {isa = PBXBuildFile; fileRef = 45E52B2A1FDEF6BF0046D7BA /* ft_memjoin.c */; };
+		4512DF641FE1DCF000A83097 /* ft_memmove.c in Sources */ = {isa = PBXBuildFile; fileRef = ED2099511FD0461200F45D1D /* ft_memmove.c */; };
+		4512DF651FE1DE7400A83097 /* ft_memcpy.c in Sources */ = {isa = PBXBuildFile; fileRef = ED2099361FD0461100F45D1D /* ft_memcpy.c */; };
 		45A0F98A1FDF565B006B3941 /* ft_search_item.c in Sources */ = {isa = PBXBuildFile; fileRef = EDC61A181FD5424F0010127B /* ft_search_item.c */; };
 		45A0F98D1FDF59B6006B3941 /* ft_create_item.c in Sources */ = {isa = PBXBuildFile; fileRef = EDA99CAA1FD4BAA300493819 /* ft_create_item.c */; };
 		45A0F9C81FDF9B0D006B3941 /* auteur in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED2098941FD0455F00F45D1D /* auteur */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -330,6 +332,8 @@
 				450D22AA1FE162F800E668F3 /* ft_memichr.c in Sources */,
 				45A0F98D1FDF59B6006B3941 /* ft_create_item.c in Sources */,
 				45A0F98A1FDF565B006B3941 /* ft_search_item.c in Sources */,
+				4512DF641FE1DCF000A83097 /* ft_memmove.c in Sources */,
+				4512DF651FE1DE7400A83097 /* ft_memcpy.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

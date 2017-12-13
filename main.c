@@ -10,8 +10,7 @@
 
 int main(int argc, char *argv[])
 {
-
-	char **line = NULL;
+	char *line = NULL;
 	int fd[5];
 	int i = 0;
 
@@ -30,9 +29,11 @@ int main(int argc, char *argv[])
 	else
 		fd[0] = 1;
 
-	while (get_next_line(fd[i], line))
+	while (get_next_line(fd[i], &line))
 	{
-		printf("%d : %s", fd[i], *line);
+		printf("%d : %s", fd[i], line);
+		if (line)
+			free(line);
 	}
 	if (argc > 1)
 		while (i < 5) {
@@ -42,4 +43,3 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
-

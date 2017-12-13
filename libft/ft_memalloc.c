@@ -19,7 +19,6 @@ void	*ft_memalloc(size_t size)
 	char	*set_buff;
 	size_t	i;
 
-	new_buff = NULL;
 	i = 0;
 	new_buff = malloc(size);
 	if (new_buff != NULL)
