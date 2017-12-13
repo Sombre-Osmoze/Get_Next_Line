@@ -12,7 +12,7 @@
 
 NAME	=	libft.a
 
-SRC		=				ft_abs.c \
+SRC		=	ft_abs.c \
 			ft_atoi.c \
 			ft_bzero.c \
 			ft_create_item.c \
@@ -85,7 +85,6 @@ SRC		=				ft_abs.c \
 			ft_strtrim.c \
 			ft_tolower.c \
 			ft_toupper.c \
-
 
 
 OBJS	=	$(SRC:.c=.o)

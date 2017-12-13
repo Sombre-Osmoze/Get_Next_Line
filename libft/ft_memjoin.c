@@ -16,9 +16,9 @@
 void	*ft_memjoin(void *head, size_t head_size, void *tail, size_t tail_size)
 {
 	unsigned char	*body;
-	
+
 	body = NULL;
-	body = malloc(sizeof(unsigned char) * (head_size + tail_size));
+	body = ft_memalloc(sizeof(unsigned char) * (head_size + tail_size));
 	if (body)
 	{
 		ft_memmove(body, head, head_size);

@@ -8,12 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		45A0F98A1FDF565B006B3941 /* ft_search_item.c in Sources */ = {isa = PBXBuildFile; fileRef = EDC61A181FD5424F0010127B /* ft_search_item.c */; };
-		45A0F98C1FDF57F8006B3941 /* ft_init_ctrl.c in Sources */ = {isa = PBXBuildFile; fileRef = 45A0F98B1FDF57F8006B3941 /* ft_init_ctrl.c */; };
 		45A0F98D1FDF59B6006B3941 /* ft_create_item.c in Sources */ = {isa = PBXBuildFile; fileRef = EDA99CAA1FD4BAA300493819 /* ft_create_item.c */; };
-		45A0F9C71FDF7EB9006B3941 /* ft_abs.c in Sources */ = {isa = PBXBuildFile; fileRef = 45A0F9C61FDF7EB9006B3941 /* ft_abs.c */; };
 		45A0F9C81FDF9B0D006B3941 /* auteur in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED2098941FD0455F00F45D1D /* auteur */; };
-		45A0F9CA1FDF9D6C006B3941 /* ft_memichr.c in Sources */ = {isa = PBXBuildFile; fileRef = 45A0F9C91FDF9D6C006B3941 /* ft_memichr.c */; };
-		45E52B2B1FDEF6BF0046D7BA /* ft_memjoin.c in Sources */ = {isa = PBXBuildFile; fileRef = 45E52B2A1FDEF6BF0046D7BA /* ft_memjoin.c */; settings = {COMPILER_FLAGS = "-Wall -Wextra -Weverything"; }; };
 		ED2099621FD0466400F45D1D /* libft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2099331FD0461100F45D1D /* libft.a */; };
 		ED2099631FD0485700F45D1D /* File.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED407B431FCD5E36005FF1D5 /* File.txt */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		ED4DAFCB1FCD0BD800F5B191 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = ED4DAFCA1FCD0BD800F5B191 /* main.c */; };
@@ -317,11 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45A0F9CA1FDF9D6C006B3941 /* ft_memichr.c in Sources */,
-				45A0F9C71FDF7EB9006B3941 /* ft_abs.c in Sources */,
-				45A0F98C1FDF57F8006B3941 /* ft_init_ctrl.c in Sources */,
 				ED4DAFCB1FCD0BD800F5B191 /* main.c in Sources */,
-				45E52B2B1FDEF6BF0046D7BA /* ft_memjoin.c in Sources */,
 				EDC61A1B1FD5481A0010127B /* ft_rm_item.c in Sources */,
 				ED4DAFCE1FCD0C6B00F5B191 /* get_next_line.c in Sources */,
 				45A0F98D1FDF59B6006B3941 /* ft_create_item.c in Sources */,
@@ -444,6 +436,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/libft",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -457,6 +450,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/libft",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

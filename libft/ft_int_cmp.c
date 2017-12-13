@@ -10,15 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_int_cmp(const void *cmp, const void *ref)
+int	ft_int_cmp(const void *cmp, const void *ref, int i)
 {
-	int cmp_p;
-	int ref_p;
-	
-	cmp_p = (int)cmp;
-	ref_p = (int)ref;
-	
-	if (cmp_p == ref_p)
+	int *cmp_p;
+	int *ref_p;
+
+	cmp_p = (int *)cmp;
+	ref_p = (int *)ref;
+	if (cmp_p[i] == ref_p[i])
 		return (1);
 	else
 		return (0);

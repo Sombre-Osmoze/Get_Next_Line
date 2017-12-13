@@ -13,15 +13,15 @@
 #include <stdlib.h>
 #include "libft.h"
 
-t_item	*ft_search_item(t_ctrl *ctrl, const void *ref,
-						int (*cmp)(const void *cmp, const void *ref))
+t_item	*ft_search_item(t_ctrl *ctrl, const void *ref, int i,
+						int (*cmp)(const void *cmp, const void *ref, int i))
 {
 	t_item	*tmp;
 
 	tmp = ctrl->head;
 	while (tmp != NULL)
 	{
-		if ((cmp)(tmp->content_ref, ref))
+		if ((cmp)(tmp->content_ref, ref, i))
 		{
 			ctrl->last_ac = tmp;
 			return (tmp);

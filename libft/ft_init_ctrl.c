@@ -13,13 +13,13 @@
 #include <stdlib.h>
 #include "libft.h"
 
-t_ctrl	*ft_init_ctrl()
+t_ctrl	*ft_init_ctrl(void)
 {
 	t_ctrl	*new_ctrl;
-	
+
 	new_ctrl = malloc(sizeof(t_ctrl));
 	new_ctrl->nb_item = 0;
-	new_ctrl->head =  NULL;
+	new_ctrl->head = NULL;
 	new_ctrl->tail = NULL;
 	new_ctrl->curr = NULL;
 	new_ctrl->last_ac = NULL;

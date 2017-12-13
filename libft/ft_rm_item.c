@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-t_item	*ft_rm_item(t_ctrl *ctrl, int pos)
+t_item	*ft_rm_item(t_ctrl *ctrl, size_t pos)
 {
 	t_item	*tmp;
 
@@ -21,6 +21,7 @@ t_item	*ft_rm_item(t_ctrl *ctrl, int pos)
 	if (tmp != NULL)
 	{
 		free(tmp->content);
+		free(tmp->content_ref);
 		tmp->content = NULL;
 		tmp->row = -1;
 		tmp->prev->next = tmp->next;

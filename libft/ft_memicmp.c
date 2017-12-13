@@ -16,7 +16,7 @@ size_t	ft_memicmp(const void *s1, const void *s2, size_t len)
 {
 	unsigned char	*p_s1;
 	unsigned char	*p_s2;
-	size_t	i;
+	size_t			i;
 
 	i = 0;
 	p_s1 = (unsigned char *)s1;
