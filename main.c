@@ -31,12 +31,17 @@ int main(int argc, char *argv[])
 
 	while (get_next_line(fd[i], &line))
 	{
-		printf("%d : %s", fd[i], line);
+		ft_putendl(line);
+//		printf("%d : %s\n", fd[i], line);
 		if (line)
 			free(line);
 	}
+	if (line) {
+		printf("%s\n", line);
+		free(line);
+	}
 	if (argc > 1)
-		while (i < 5) {
+		while (--i >= 0) {
 			if (fd[i] != -1)
 				close(fd[i]);
 		}

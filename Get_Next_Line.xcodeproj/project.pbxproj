@@ -7,13 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		450D22AA1FE162F800E668F3 /* ft_memichr.c in Sources */ = {isa = PBXBuildFile; fileRef = 45A0F9C91FDF9D6C006B3941 /* ft_memichr.c */; };
+		4508C1C61FE33404008C2BAF /* ft_memichr.c in Sources */ = {isa = PBXBuildFile; fileRef = 45A0F9C91FDF9D6C006B3941 /* ft_memichr.c */; };
 		450D22AC1FE1711900E668F3 /* test.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 450D22AB1FE1711200E668F3 /* test.txt */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		450D22AD1FE1711D00E668F3 /* README.md in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED2098961FD0455F00F45D1D /* README.md */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		450D22AE1FE1711F00E668F3 /* get_next_line.fr.pdf in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED2098711FD02BA900F45D1D /* get_next_line.fr.pdf */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		450D22AF1FE17ADA00E668F3 /* ft_memjoin.c in Sources */ = {isa = PBXBuildFile; fileRef = 45E52B2A1FDEF6BF0046D7BA /* ft_memjoin.c */; };
-		4512DF641FE1DCF000A83097 /* ft_memmove.c in Sources */ = {isa = PBXBuildFile; fileRef = ED2099511FD0461200F45D1D /* ft_memmove.c */; };
-		4512DF651FE1DE7400A83097 /* ft_memcpy.c in Sources */ = {isa = PBXBuildFile; fileRef = ED2099361FD0461100F45D1D /* ft_memcpy.c */; };
 		45A0F98A1FDF565B006B3941 /* ft_search_item.c in Sources */ = {isa = PBXBuildFile; fileRef = EDC61A181FD5424F0010127B /* ft_search_item.c */; };
 		45A0F98D1FDF59B6006B3941 /* ft_create_item.c in Sources */ = {isa = PBXBuildFile; fileRef = EDA99CAA1FD4BAA300493819 /* ft_create_item.c */; };
 		45A0F9C81FDF9B0D006B3941 /* auteur in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED2098941FD0455F00F45D1D /* auteur */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -47,6 +44,7 @@
 		45A0F9C61FDF7EB9006B3941 /* ft_abs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ft_abs.c; sourceTree = "<group>"; };
 		45A0F9C91FDF9D6C006B3941 /* ft_memichr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ft_memichr.c; sourceTree = "<group>"; };
 		45BAD9F41FDF29F90023E35B /* ft_int_cmp.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ft_int_cmp.c; sourceTree = "<group>"; };
+		45C27C7C1FE2CA02003E982C /* ft_strnjoin.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ft_strnjoin.c; sourceTree = "<group>"; };
 		45E52B2A1FDEF6BF0046D7BA /* ft_memjoin.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ft_memjoin.c; sourceTree = "<group>"; };
 		ED2098711FD02BA900F45D1D /* get_next_line.fr.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = get_next_line.fr.pdf; sourceTree = "<group>"; };
 		ED2098941FD0455F00F45D1D /* auteur */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = auteur; sourceTree = "<group>"; };
@@ -223,6 +221,7 @@
 				45A0F98B1FDF57F8006B3941 /* ft_init_ctrl.c */,
 				45A0F9C61FDF7EB9006B3941 /* ft_abs.c */,
 				45A0F9C91FDF9D6C006B3941 /* ft_memichr.c */,
+				45C27C7C1FE2CA02003E982C /* ft_strnjoin.c */,
 			);
 			path = libft;
 			sourceTree = "<group>";
@@ -327,13 +326,10 @@
 			files = (
 				ED4DAFCB1FCD0BD800F5B191 /* main.c in Sources */,
 				EDC61A1B1FD5481A0010127B /* ft_rm_item.c in Sources */,
-				450D22AF1FE17ADA00E668F3 /* ft_memjoin.c in Sources */,
 				ED4DAFCE1FCD0C6B00F5B191 /* get_next_line.c in Sources */,
-				450D22AA1FE162F800E668F3 /* ft_memichr.c in Sources */,
 				45A0F98D1FDF59B6006B3941 /* ft_create_item.c in Sources */,
+				4508C1C61FE33404008C2BAF /* ft_memichr.c in Sources */,
 				45A0F98A1FDF565B006B3941 /* ft_search_item.c in Sources */,
-				4512DF641FE1DCF000A83097 /* ft_memmove.c in Sources */,
-				4512DF651FE1DE7400A83097 /* ft_memcpy.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

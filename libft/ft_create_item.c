@@ -14,12 +14,47 @@
 #include "libft.h"
 #include <string.h>
 
+static void		ft_set_null(t_ctrl *ctrl, t_item *new, size_t pos)
+{
+	new->content = NULL;
+	new->content_ref = 0;
+	new->content_size = 0;
+	new->row = pos;
+	new->ctrl = ctrl;
+	new->next = NULL;
+	new->prev = NULL;
+	ctrl->last_ac = new;
+	ctrl->nb_item += +1;
+}
+
+static t_item	*ft_spc_creat(t_ctrl *ctrl, size_t pos)
+{
+	t_item	*new_item;
+
+	new_item = malloc(sizeof(t_item));
+	if (new_item)
+	{
+		ft_set_null(ctrl, new_item, pos);
+		if (ctrl->head)
+		{
+			new_item->next = ctrl->head;
+			ctrl->head->prev = new_item;
+		}
+		else if (ctrl->nb_item - 1 == 0)
+			ctrl->tail = new_item;
+		ctrl->head = new_item;
+	}
+	return (new_item);
+}
+
 static t_item	*ft_mv_prev_pos(t_ctrl *c, unsigned long long res[4], size_t ps)
 {
 	unsigned long long	tmp;
 	int					i[2];
 
 	tmp = res[0];
+	if (c->nb_item <= 15)
+		return (c->head);
 	ft_bzero(i, sizeof(i[0] * 2));
 	while (i[0] < 4)
 	{
@@ -58,17 +93,17 @@ static t_item	*ft_get_way(t_ctrl *ctrl, size_t pos)
 			&& ctrl->curr != ctrl->curr)
 		res[3] = ft_abs(ctrl->last_ac->row - pos);
 	tmp = ft_mv_prev_pos(ctrl, res, pos);
-	if (tmp->row == pos - 1 && tmp->row - pos > 0)
-		while (tmp->row == pos - 1)
+	if (tmp && tmp->row == pos - 1 && tmp->row - pos > 0)
+		while (tmp && tmp->row == pos - 1)
 			tmp = tmp->next;
-	else if (tmp->row == pos - 1 && (long long)(tmp->row - pos) < 0)
-		while (tmp->row == pos - 1)
+	else if (tmp && tmp->row == pos - 1 && (long long)(tmp->row - pos) < 0)
+		while (tmp && tmp->row == pos - 1)
 			tmp = tmp->prev;
 	return (tmp);
 }
 
 /*
-**  Fontion wich create a new item (t_item) of a list.
+**  Fontion wich create a new item (t_item) of a list pour une position > 0.
 **	@param ctrl The pointer to a controler "t_ctrl" of a list of "t_item.
 **	@param pos The position where the item must be created.
 **	@return The poiter to the new item "t_item".
@@ -81,19 +116,18 @@ t_item			*ft_create_item(t_ctrl *ctrl, size_t pos)
 
 	if (!ctrl)
 		return (NULL);
-	tmp = ft_get_way(ctrl, pos);
-	if ((new_item = malloc(sizeof(t_item))) == NULL)
-		return (NULL);
-	new_item->content = NULL;
-	new_item->content_ref = 0;
-	new_item->content_size = 0;
-	new_item->row = pos;
-	new_item->prev = tmp;
-	new_item->next = tmp->next;
-	new_item->ctrl = ctrl;
-	ctrl->last_ac = new_item;
-	ctrl->nb_item = ctrl->nb_item + 1;
-	tmp->next = new_item;
+	if (pos == 0)
+		new_item = ft_spc_creat(ctrl, pos);
+	else
+	{
+		tmp = ft_get_way(ctrl, pos);
+		if (tmp == NULL || (new_item = malloc(sizeof(t_item))) == NULL)
+			return (NULL);
+		ft_set_null(ctrl, new_item, pos);
+		new_item->prev = tmp;
+		new_item->next = tmp->next;
+		tmp->next = new_item;
+	}
 	tmp = new_item->next;
 	while (tmp != NULL)
 	{

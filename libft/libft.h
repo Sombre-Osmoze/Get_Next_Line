@@ -119,5 +119,7 @@ void			*ft_memjoin(void *head, size_t head_size,
 int				ft_int_cmp(const void *cmp, const void *ref, int i);
 size_t			ft_abs(long long nb);
 size_t			ft_memichr(const void *src, char chr, size_t len);
+char			*ft_strnjoin(const char *s1, size_t n1,
+													const char *s2, size_t n2);
 
 #endif

@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strnjoin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mflorent <mflorent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mflorent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/29 15:00:14 by mflorent          #+#    #+#             */
-/*   Updated: 2017/11/20 21:18:53 by mflorent         ###   ########.fr       */
+/*   Created: 2017/12/14 16:03:26 by mflorent          #+#    #+#             */
+/*   Updated: 2017/12/14 16:03:26 by mflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strnjoin(const char *s1, size_t n1, const char *s2, size_t n2)
 {
-	size_t	i[4];
+	size_t	i[2];
 	char	*new;
 	char	*buff;
 
+	if (s1 == NULL && s2 == NULL)
+		return (NULL);
+	if ((new = ft_strnew((n1 + n2 - 2) * sizeof(char) + 1)) == NULL)
+		return (NULL);
 	ft_bzero(i, sizeof(i));
-	i[2] = ft_strlen(s1);
-	i[3] = ft_strlen(s2);
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	if ((new = ft_strnew((i[2] + i[3] - 2) * sizeof(char) + 1)) == NULL)
-		return (NULL);
 	buff = new;
-	while (i[0] < i[2])
+	while (s1 && i[0] < n1)
 	{
 		*new++ = *s1++;
 		i[0] += 1;
 	}
-	while (i[1] < i[3])
+	while (*s2 && i[1] < n2)
 	{
 		*new++ = *s2++;
 		i[1] += 1;

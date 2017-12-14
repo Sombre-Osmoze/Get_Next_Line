@@ -75,6 +75,7 @@ SRC		=	ft_abs.c \
 			ft_strncpy.c \
 			ft_strnequ.c \
 			ft_strnew.c \
+			ft_strnjoin.c \
 			ft_strnstr.c \
 			ft_strnswp.c \
 			ft_strrchr.c \
@@ -85,6 +86,8 @@ SRC		=	ft_abs.c \
 			ft_strtrim.c \
 			ft_tolower.c \
 			ft_toupper.c \
+
+
 
 
 OBJS	=	$(SRC:.c=.o)

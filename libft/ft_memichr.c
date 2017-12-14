@@ -27,5 +27,5 @@ size_t	ft_memichr(const void *src, char chr, size_t len)
 		i++;
 		p_src++;
 	}
-	return (-1);
+	return (len + 1);
 }
