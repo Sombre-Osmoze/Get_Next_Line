@@ -13,20 +13,29 @@
 #include <stdlib.h>
 #include "libft.h"
 
-t_item	*ft_rm_item(t_ctrl *ctrl, size_t pos)
+static void	ft_delete_data(t_ctrl *ctrl, t_item *tmp)
+{
+	if (tmp->content)
+		free(tmp->content);
+	if (tmp->content_ref)
+		free(tmp->content_ref);
+	if (tmp->prev)
+		tmp->prev->next = tmp->next;
+	if (tmp->next)
+		tmp->next->prev = tmp->prev;
+	ctrl->last_ac = tmp->next;
+}
+
+t_item		*ft_rm_item(t_ctrl *ctrl, size_t pos)
 {
 	t_item	*tmp;
 
 	tmp = ft_get_item(ctrl, pos);
 	if (tmp != NULL)
 	{
-		free(tmp->content);
-		free(tmp->content_ref);
+		ft_delete_data(ctrl, tmp);
 		tmp->content = NULL;
 		tmp->row = -1;
-		tmp->prev->next = tmp->next;
-		tmp->next->prev = tmp->prev;
-		ctrl->last_ac = tmp->next;
 		tmp->ctrl = NULL;
 		tmp->prev = NULL;
 		tmp->next = NULL;

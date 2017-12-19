@@ -17,7 +17,7 @@ static void	ft_stock_data(int fd, char *rest, t_ctrl *ctrl, size_t end)
 	int	*ref;
 
 	ref = ft_memalloc(sizeof(int) * 2);
-	if (ft_create_item(ctrl, ctrl->nb_item) != NULL && ref != NULL)
+	if (ref && *rest != 0 && end && ft_create_item(ctrl, ctrl->nb_item) != NULL)
 	{
 		ref[0] = fd;
 		ref[1] = 0;
@@ -33,9 +33,10 @@ static int	ft_read_line(const int fd, char **line, t_ctrl *ctrl, size_t res[2])
 	size_t			i[4];
 	char			*buff;
 
+	(void)res;
 	ft_bzero(i, sizeof(i));
 	buff = NULL;
-	i[2] = res[1];
+ 	i[2] = res[1];
 	i[1] = BUFF_SIZE + 1;
 	while (i[1] == BUFF_SIZE + 1 && (i[0] = read(fd, tmp, BUFF_SIZE)) > 0)
 	{
@@ -47,7 +48,10 @@ static int	ft_read_line(const int fd, char **line, t_ctrl *ctrl, size_t res[2])
 		if (*line)
 			free (*line);
 		*line = buff;
-		i[2] += i[0];
+		if (i[1] != BUFF_SIZE + 1)
+			i[2] += i[1];
+		else
+			i[2] += i[0];
 		i[3] = i[0];
 	}
 	if (i[2] != 0 && i[1] != BUFF_SIZE + 1 && i[1] < i[3])
@@ -62,27 +66,30 @@ static char	*ft_get_buff(const int fd, char **line, t_ctrl *ctrl, size_t res[2])
 	size_t	lim;
 	int		*ref;
 
-	lim = 0;
 	if (ctrl && ft_search_item(ctrl, (const void *)&fd, 0,  &ft_int_cmp))
 	{
 		ref = (int *)ctrl->last_ac->content_ref;
 		lim = ft_memichr((char *)(ctrl->last_ac->content) + ref[1], '\n',
 						 ctrl->last_ac->content_size);
-		if (lim != ctrl->last_ac->content_size + 1)
+		if (lim == ctrl->last_ac->content_size + 1)
 		{
-			res[1] = lim;
+			res[1] = (size_t)ctrl->last_ac->content_size;
 			res[0] = 42;
 		}
-		else
-			lim--;
 		ref[1] = (int)lim;
 		*line = (char *)ft_memjoin(NULL, 0, ctrl->last_ac->content, lim);
-//		if (lim == ctrl->last_ac->content_size)
-//			ft_rm_item(ctrl, ctrl->last_ac->row);
+		if (lim == ctrl->last_ac->content_size)
+			ft_rm_item(ctrl, ctrl->last_ac->row);
 	}
 	return (*line);
 }
 
+/**
+** Renvoie un fichier ligne par ligne dans un tableau de 'char' alloué
+** @param fd File descriptor -> "open()"
+** @param line Le tableau de 'char' contenant la ligne actuelle
+** @return Information sur le fichier
+*/
 int			get_next_line(const int fd, char **line)
 {
 	static t_ctrl	*ctrl;

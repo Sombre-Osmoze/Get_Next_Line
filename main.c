@@ -1,4 +1,4 @@
- //
+//
 //  main.c
 //  Get_Next_Line
 //
@@ -13,7 +13,6 @@ int main(int argc, char *argv[])
 	char *line = NULL;
 	int fd[5];
 	int i = 0;
-
 
 	while (i  < 5)
 		fd[i++] = 0;
