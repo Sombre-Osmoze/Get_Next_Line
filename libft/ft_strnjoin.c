@@ -19,7 +19,7 @@ char	*ft_strnjoin(const char *s1, size_t n1, const char *s2, size_t n2)
 	char	*new;
 	char	*buff;
 
-	if (s1 == NULL && s2 == NULL)
+	if ((s1 == NULL && s2 == NULL) || (!n1 && !n2))
 		return (NULL);
 	if ((new = ft_strnew((n1 + n2 - 2) * sizeof(char) + 1)) == NULL)
 		return (NULL);

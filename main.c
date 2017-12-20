@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
 	else
 		fd[0] = 1;
 
+
 	while (get_next_line(fd[i], &line))
 	{
 		ft_putendl(line);

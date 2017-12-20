@@ -23,6 +23,12 @@ static void	ft_delete_data(t_ctrl *ctrl, t_item *tmp)
 		tmp->prev->next = tmp->next;
 	if (tmp->next)
 		tmp->next->prev = tmp->prev;
+	if (ctrl->head == tmp)
+		ctrl->head = NULL;
+	if (ctrl->tail == tmp)
+		ctrl->tail = NULL;
+	if (ctrl->curr == tmp)
+		ctrl->curr = NULL;
 	ctrl->last_ac = tmp->next;
 }
 
@@ -47,6 +53,7 @@ t_item		*ft_rm_item(t_ctrl *ctrl, size_t pos)
 			tmp->row = tmp->row - 1;
 			tmp = tmp->next;
 		}
+		ctrl->last_ac = tmp;
 	}
 	return (tmp);
 }
