@@ -14,6 +14,7 @@
 		ED4DAFCB1FCD0BD800F5B191 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = ED4DAFCA1FCD0BD800F5B191 /* main.c */; };
 		ED4DAFCE1FCD0C6B00F5B191 /* get_next_line.c in Sources */ = {isa = PBXBuildFile; fileRef = ED4DAFCD1FCD0C6B00F5B191 /* get_next_line.c */; settings = {COMPILER_FLAGS = "-Wall -Wextra -Weverything"; }; };
 		ED50B40D1FE686D9004987FB /* lol.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED50B40C1FE686D0004987FB /* lol.txt */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		ED79FD001FEDABAF00EB15A1 /* libft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED79FCFE1FEDA51900EB15A1 /* libft.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED79FD001FEDABAF00EB15A1 /* libft.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
