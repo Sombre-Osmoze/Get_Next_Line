@@ -85,6 +85,7 @@ static size_t	ft_get_buff(const int fd, char **line, t_ctrl *cl, size_t r[2])
 	return (lim);
 }
 
+
 /**
 ** Renvoie un fichier ligne par ligne dans un tableau de 'char' alloué
 ** @param fd File descriptor -> "open()"
