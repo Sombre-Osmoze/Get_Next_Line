@@ -104,7 +104,9 @@ int			get_next_line(const int fd, char **line)
 		*line = NULL;
 		res[1] = ft_get_buff(fd, line, ctrl, res);
 		if (res[0] != (size_t)42)
-			res[0] = ft_read_line(fd, line, ctrl, res[1]);
+			res[0] = (size_t)ft_read_line(fd, line, ctrl, res[1]);
+		if (res[0] ==  (size_t)-1)
+			free(ctrl);
 	}
 	else
 		res[0] = fd;

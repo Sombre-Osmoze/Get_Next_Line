@@ -1,9 +1,7 @@
 
-Makefile
-
-auteur
 ft_abs.c
 ft_atoi.c
+
 ft_bzero.c
 ft_create_item.c
 ft_get_item.c
@@ -74,8 +72,5 @@ ft_strstr.c
 ft_strsub.c
 ft_strswp.c
 ft_strtrim.c
-ft_tolower.c
-ft_toupper.c
-libft.a
-libft.h
-lololo\n\nƒfffv
+hft_tolower.c
+hhft_toupper.c
