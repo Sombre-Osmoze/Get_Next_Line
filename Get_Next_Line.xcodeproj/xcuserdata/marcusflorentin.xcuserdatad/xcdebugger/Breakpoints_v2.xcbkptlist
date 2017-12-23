@@ -35,11 +35,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "get_next_line.c"
-            timestampString = "535679888.397453"
+            timestampString = "535719084.141309"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "ft_get_buff"
             landmarkType = "9">
          </BreakpointContent>
@@ -51,7 +51,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "get_next_line.c"
-            timestampString = "535679888.397628"
+            timestampString = "535719084.142114"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
@@ -67,7 +67,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "get_next_line.c"
-            timestampString = "535679888.397747"
+            timestampString = "535719084.143105"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
@@ -83,7 +83,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "get_next_line.c"
-            timestampString = "535679888.397858"
+            timestampString = "535719084.143697"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "59"
@@ -108,7 +108,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "get_next_line.c"
-            timestampString = "535679888.397973"
+            timestampString = "535719084.144116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "107"
@@ -123,13 +123,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../libft/sources/ft_create_item.c"
-            timestampString = "535679421.169942"
+            filePath = "../libft/sources/ft_rm_item.c"
+            timestampString = "535719277.587595"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "ft_create_item"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "ft_rm_item"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -139,13 +139,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "get_next_line.c"
-            timestampString = "535679888.398169"
+            filePath = "../libft/sources/ft_rm_item.c"
+            timestampString = "535719277.589899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "ft_get_buff"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "ft_delete_data"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../libft/sources/ft_rm_item.c"
+            timestampString = "535719277.590344"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "ft_delete_data"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
