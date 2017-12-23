@@ -55,9 +55,9 @@ static int	ft_read_line(const int fd, char **line, t_ctrl *ctrl, size_t res)
 			i[2] += i[0];
 		i[3] = i[0];
 	}
-	if (i[2] != 0 && i[1] != BUFF_SIZE + 1 && BUFF_SIZE - i[1] - 1)
-		ft_stock_data(fd, tmp + i[1] + 1, ctrl, BUFF_SIZE - i[1] - 1);
-	if (i[0] || i[1] < i[3])
+	if (i[1] < BUFF_SIZE)
+		ft_stock_data(fd, &tmp[i[1] + 1], ctrl, BUFF_SIZE - i[1] - 1);
+	if (i[0])
 		i[0] = 1;
 	return ((int)i[0]);
 }

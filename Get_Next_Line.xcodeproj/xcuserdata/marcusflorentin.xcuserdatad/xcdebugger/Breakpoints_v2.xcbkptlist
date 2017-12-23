@@ -35,11 +35,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "get_next_line.c"
-            timestampString = "535675210.402027"
+            timestampString = "535679888.397453"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "ft_get_buff"
             landmarkType = "9">
          </BreakpointContent>
@@ -51,11 +51,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "get_next_line.c"
-            timestampString = "535675210.403094"
+            timestampString = "535679888.397628"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "ft_stock_data"
             landmarkType = "9">
          </BreakpointContent>
@@ -67,7 +67,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "get_next_line.c"
-            timestampString = "535675210.403538"
+            timestampString = "535679888.397747"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
@@ -81,9 +81,9 @@
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
-            continueAfterRunningActions = "Yes"
+            continueAfterRunningActions = "No"
             filePath = "get_next_line.c"
-            timestampString = "535675210.403924"
+            timestampString = "535679888.397858"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "59"
@@ -108,12 +108,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "get_next_line.c"
-            timestampString = "535675858.200152"
+            timestampString = "535679888.397973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "ft_read_line"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "get_next_line"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../libft/sources/ft_create_item.c"
+            timestampString = "535679421.169942"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "ft_create_item"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -124,12 +140,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "get_next_line.c"
-            timestampString = "535675859.610244"
+            timestampString = "535679888.398169"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "ft_read_line"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "ft_get_buff"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

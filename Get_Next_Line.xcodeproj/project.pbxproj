@@ -78,8 +78,8 @@
 				ED2098711FD02BA900F45D1D /* get_next_line.fr.pdf */,
 				ED4DAFC61FCD0B7300F5B191 /* Get_Next_Line */,
 				ED4DAFC81FCD0BAE00F5B191 /* Tests */,
-				ED4DAFBD1FCD0AD700F5B191 /* Products */,
 				ED79FCF81FEDA51800EB15A1 /* ft.xcodeproj */,
+				ED4DAFBD1FCD0AD700F5B191 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
