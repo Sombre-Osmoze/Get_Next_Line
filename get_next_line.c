@@ -57,12 +57,12 @@ static int	ft_read_line(const int fd, char **line, t_ctrl *ctrl, size_t res)
 	}
 	if (i[1] < BUFF_SIZE)
 		ft_stock_data(fd, &tmp[i[1] + 1], ctrl, BUFF_SIZE - i[1] - 1);
-	if (i[0])
-		i[0] = 1;
-	return ((int)i[0]);
+	if (i[0] && i[3] != 1)
+		return (1);
+	return ((int)i[3]);
 }
 
-static size_t	ft_get_buff(const int fd, char **line, t_ctrl *cl, size_t r[2])
+static int	ft_get_buff(const int fd, char **line, t_ctrl *cl, int *r)
 {
 	size_t	lim;
 	int		*ref;
@@ -73,16 +73,16 @@ static size_t	ft_get_buff(const int fd, char **line, t_ctrl *cl, size_t r[2])
 		ref = (int *)cl->last_ac->content_ref;
 		lim = ft_memichr((char *)(cl->last_ac->content) + ref[1], '\n',
 						 cl->last_ac->content_size);
-		if (lim == cl->last_ac->content_size + 1)
+		if (lim++ == cl->last_ac->content_size + 1)
 			lim = (size_t)cl->last_ac->content_size;
 		else
-			r[0] = 42;
+			*r = 42;
 		ref[1] = (int)lim;
 		*line = (char *)ft_memjoin(NULL, 0, cl->last_ac->content, lim);
 		if (lim == cl->last_ac->content_size)
 			ft_rm_item(cl, cl->last_ac->row);
 	}
-	return (lim);
+	return ((int)lim);
 }
 
 /**
@@ -94,7 +94,7 @@ static size_t	ft_get_buff(const int fd, char **line, t_ctrl *cl, size_t r[2])
 int			get_next_line(const int fd, char **line)
 {
 	static t_ctrl	*ctrl;
-	size_t			res[2];
+	int				res[2];
 
 	ft_bzero(res, sizeof(res));
 	if (fd > 0)
@@ -103,9 +103,9 @@ int			get_next_line(const int fd, char **line)
 			ctrl = (t_ctrl *)ft_init_ctrl();
 		*line = NULL;
 		res[1] = ft_get_buff(fd, line, ctrl, res);
-		if (res[0] != (size_t)42)
-			res[0] = (size_t)ft_read_line(fd, line, ctrl, res[1]);
-		if (res[0] ==  (size_t)-1)
+		if (res[0] != 42)
+			res[0] = ft_read_line(fd, line, ctrl, res[1]);
+		if (res[0] ==  -1)
 			free(ctrl);
 	}
 	else
