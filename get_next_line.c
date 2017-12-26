@@ -105,10 +105,10 @@ int			get_next_line(const int fd, char **line)
 		res[1] = ft_get_buff(fd, line, ctrl, res);
 		if (res[0] != 42)
 			res[0] = ft_read_line(fd, line, ctrl, res[1]);
-		if (res[0] ==  -1)
+		if (res[0] ==  -1 && ctrl)
 			free(ctrl);
 	}
 	else
 		res[0] = fd;
-	return ((int)res[0]);
+	return (res[0]);
 }

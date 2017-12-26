@@ -60,7 +60,7 @@ ft_strmap.c
 ft_strmapi.c
 ft_strncat.c
 ft_strncmp.c
- 
+
 ft_strncpy.c
 ft_strnequ.c
 ft_strnew.c
@@ -73,5 +73,5 @@ ft_strstr.c
 ft_strsub.c
 ft_strswp.c
 ft_strtrim.c
-hft_tolower.c
-hhft_toupper.c
+ft_tolower.c
+ft_toupper.c
