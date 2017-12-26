@@ -31,12 +31,11 @@ int main(int argc, char *argv[])
 	while (get_next_line(fd[i], &line))
 	{
 		ft_putendl(line);
-//		printf("%d : %s\n", fd[i], line);
 		if (line)
 			free(line);
 	}
 	if (line) {
-		printf("%s\n", line);
+		ft_putendl(line);
 		free(line);
 	}
 	if (argc > 1)
