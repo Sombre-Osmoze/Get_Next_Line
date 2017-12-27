@@ -62,7 +62,7 @@ static int	ft_read_line(const int fd, char **line, t_ctrl *ctrl, size_t res)
 	return ((int)i[3]);
 }
 
-static int	ft_get_buff(const int fd, char **line, t_ctrl *cl, int *r)
+static int	ft_get_buff(const int fd, char **line, t_ctrl *cl, int *rest)
 {
 	size_t	lim;
 	int		*ref;
@@ -76,7 +76,7 @@ static int	ft_get_buff(const int fd, char **line, t_ctrl *cl, int *r)
 		if (lim++ == cl->last_ac->content_size + 1)
 			lim = (size_t)cl->last_ac->content_size;
 		else
-			*r = 42;
+			*rest = 42;
 		ref[1] = (int)lim;
 		*line = (char *)ft_memjoin(NULL, 0, cl->last_ac->content, lim);
 		if (lim == cl->last_ac->content_size)
