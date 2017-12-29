@@ -11,4 +11,3 @@ Error (line 75): must begin only by tabulations
 Error (line 88): comment not well formatted
 Error (line 94): bad spacing before get_next_line
 Error (line 108, col 15): bad spacing
-

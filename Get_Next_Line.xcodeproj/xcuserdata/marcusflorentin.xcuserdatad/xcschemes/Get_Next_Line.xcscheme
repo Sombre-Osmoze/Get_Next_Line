@@ -46,9 +46,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      enableAddressSanitizer = "YES"
       enableASanStackUseAfterReturn = "YES"
-      enableUBSanitizer = "YES"
+      disableMainThreadChecker = "YES"
       language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
@@ -70,11 +69,11 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "auteur"
+            argument = "lol.txt"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "lol.txt"
+            argument = "auteur"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

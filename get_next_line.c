@@ -47,7 +47,7 @@ static int	ft_read_line(const int fd, char **line, t_ctrl *ctrl, size_t res)
 		else
 			buff = ft_strnjoin(*line, i[2], tmp, i[1]);
 		if (*line)
-			free (*line);
+			free(*line);
 		*line = buff;
 		if (i[1] != BUFF_SIZE + 1)
 			i[2] += i[1];
@@ -72,14 +72,16 @@ static int	ft_get_buff(const int fd, char **line, t_ctrl *cl, int *rest)
 	{
 		ref = (int *)cl->last_ac->content_ref;
 		lim = ft_memichr((char *)(cl->last_ac->content) + ref[1], '\n',
-						 cl->last_ac->content_size);
-		if (lim++ == cl->last_ac->content_size + 1)
+									cl->last_ac->content_size);
+		if (lim == cl->last_ac->content_size + 1)
 			lim = (size_t)cl->last_ac->content_size;
 		else
+		{
 			*rest = 42;
-		ref[1] = (int)lim;
-		*line = (char *)ft_memjoin(NULL, 0, cl->last_ac->content, lim);
-		if (lim == cl->last_ac->content_size)
+			ref[1] = (int)lim + 1;
+		}
+		*line = ft_strnjoin(NULL, 0, cl->last_ac->content, lim++);
+		if (lim == cl->last_ac->content_size + 1)
 			ft_rm_item(cl, cl->last_ac->row);
 	}
 	return ((int)lim);
@@ -91,6 +93,7 @@ static int	ft_get_buff(const int fd, char **line, t_ctrl *cl, int *rest)
 ** @param line Le tableau de 'char' contenant la ligne actuelle
 ** @return Information sur le fichier
 */
+
 int			get_next_line(const int fd, char **line)
 {
 	static t_ctrl	*ctrl;
@@ -105,8 +108,8 @@ int			get_next_line(const int fd, char **line)
 		res[1] = ft_get_buff(fd, line, ctrl, res);
 		if (res[0] != 42)
 			res[0] = ft_read_line(fd, line, ctrl, res[1]);
-		if (res[0] ==  -1 && ctrl)
-			free(ctrl);
+		if (res[0] ==  -1 || res[0] == 0)
+			ft_rm_list(ctrl);
 	}
 	else
 		res[0] = fd;
