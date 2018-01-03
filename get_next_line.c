@@ -101,7 +101,7 @@ int			get_next_line(const int fd, char **line)
 	if (fd > 0)
 	{
 		if (!ctrl)
-			ctrl = (t_ctrl *)ft_init_ctrl();
+			ctrl = ft_init_ctrl();
 		*line = NULL;
 		res[1] = ft_get_buff(fd, line, ctrl, res);
 		if (res[0] != 42)

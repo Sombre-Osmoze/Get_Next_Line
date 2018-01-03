@@ -10,7 +10,7 @@
 
 int main(int argc, char *argv[])
 {
-	char *line = "";
+	char *line = NULL;
 	int fd[5];
 	int i = 0;
 
@@ -33,8 +33,7 @@ int main(int argc, char *argv[])
 		ft_putendl(line);
 		if (line){
 			bzero(line, sizeof(&line));
-			free(line);
-		}
+			free(line); }
 	}
 	if (line) {
 		ft_putendl(line);
