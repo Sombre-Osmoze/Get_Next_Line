@@ -69,7 +69,8 @@ static int	ft_get_buff(const int fd, char **line, t_ctrl *cl, int *rest)
 		ref = (size_t *)cl->last_ac->content_ref;
 		lim = ft_memichr(((char *)(cl->last_ac->content)) + ref[1], '\n',
 									cl->last_ac->content_size);
-		if (lim != cl->last_ac->content_size + 1) {
+		if (lim != cl->last_ac->content_size + 1)
+		{
 			*rest = 42;
 			*line = ft_strnjoin(NULL, 0,
 								((char *)cl->last_ac->content) + ref[1], lim);
@@ -109,7 +110,7 @@ int			get_next_line(const int fd, char **line)
 			ft_rm_list(ctrl);
 	}
 	else
-		res[0] = fd;
+		return (-1);
 	if (res[0])
 		res[0] = 1;
 	return (res[0]);
