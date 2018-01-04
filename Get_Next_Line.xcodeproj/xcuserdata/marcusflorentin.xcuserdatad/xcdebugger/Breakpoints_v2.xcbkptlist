@@ -35,7 +35,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "main.c"
-            timestampString = "536674101.749305"
+            timestampString = "536767855.214478"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -51,18 +51,18 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "get_next_line.c"
-            timestampString = "536674101.749942"
+            timestampString = "536767855.214597"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "ft_get_buff"
             landmarkType = "9">
             <Actions>
                <BreakpointActionProxy
                   ActionExtensionID = "Xcode.BreakpointAction.Log">
                   <ActionContent
-                     message = "@(char *)(cl-&gt;last_ac-&gt;content) + ref[1]@ ref[1] = @ref[1]@  lim = @lim@"
+                     message = "@(char *)(cl-&gt;last_ac-&gt;content) + ref[1]@ ref[1] = @ref[1]@  size = @cl-&gt;last_ac-&gt;content_size@"
                      conveyanceType = "0">
                   </ActionContent>
                </BreakpointActionProxy>
@@ -76,11 +76,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "get_next_line.c"
-            timestampString = "536674101.750038"
+            timestampString = "536767855.215269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
             endingLineNumber = "58"
+            landmarkName = "ft_read_line"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "get_next_line.c"
+            timestampString = "536767855.216084"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "ft_read_line"
             landmarkType = "9">
          </BreakpointContent>

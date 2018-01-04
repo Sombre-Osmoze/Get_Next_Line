@@ -53,8 +53,8 @@ static int	ft_read_line(const int fd, char **line, t_ctrl *ctrl, size_t res)
 			res += i[0];
 		i[2] = i[0];
 	}
-	if (i[1] < BUFF_SIZE)
-		ft_stock_data(fd, &tmp[i[1] + 1], ctrl, BUFF_SIZE - i[1] - 1);
+	if (i[1] < i[2])
+		ft_stock_data(fd, &tmp[i[1] + 1], ctrl, i[2] - (i[1] + 1));
 	return ((int)i[2]);
 }
 
@@ -79,7 +79,8 @@ static int	ft_get_buff(const int fd, char **line, t_ctrl *cl, int *rest)
 		else
 			*line = ft_strnjoin(NULL, 0,
 								((char *)cl->last_ac->content), lim - 1);
-		if (lim == cl->last_ac->content_size + 1)
+		if (lim == cl->last_ac->content_size + 1
+				|| ref[1] == cl->last_ac->content_size)
 			ft_rm_item(cl, cl->last_ac->row);
 	}
 	return ((int)lim);
