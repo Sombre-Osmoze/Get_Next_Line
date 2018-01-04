@@ -1,14 +1,24 @@
 
-Norme: ./get_next_line.h
-Norme: ./get_next_line.c
-Error (line 32): function ft_read_line has 29 lines
-Error (line 50, col 8): Spacing after call to free
-Error (line 65): declarations must be followed by one empty line in ft_get_buff
-Error (line 69): bad indentation
 
-Error (line 69): C++ comment
-Error (line 75): must begin only by tabulations
-Error (line 88): comment not well formatted
-Error (line 94): bad spacing before get_next_line
-Error (line 108, col 15): bad spacingf
 
+
+
+
+
+
+
+
+
+
+
+
+
+1
+
+
+
+
+
+1
+
+1
