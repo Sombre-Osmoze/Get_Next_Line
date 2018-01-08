@@ -32,7 +32,6 @@ int main(int argc, char *argv[])
 	{
 		ft_putendl(line);
 		if (line){
-			bzero(line, sizeof(&line));
 			free(line); }
 	}
 	if (line) {

@@ -34,28 +34,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "main.c"
-            timestampString = "536767855.214478"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "main"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "get_next_line.c"
-            timestampString = "536774542.337263"
+            timestampString = "537063642.982326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "ft_get_buff"
             landmarkType = "9">
             <Actions>
@@ -72,16 +56,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "get_next_line.c"
-            timestampString = "536774542.337862"
+            filePath = "main.c"
+            timestampString = "537063642.983157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "ft_read_line"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "main"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -91,13 +75,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "get_next_line.c"
-            timestampString = "536774542.338419"
+            filePath = "main.c"
+            timestampString = "537063642.98326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "ft_read_line"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "main"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

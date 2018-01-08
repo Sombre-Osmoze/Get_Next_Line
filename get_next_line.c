@@ -12,21 +12,23 @@
 
 #include "get_next_line.h"
 
-static void	ft_stock_data(int fd, char *rest, t_ctrl *ctrl, size_t end)
+static int	ft_stock_data(int fd, char *rest, t_ctrl *ctrl, size_t size)
 {
 	size_t	*ref;
 
-	ref = 0;
-	if (*rest != '\0' && end != 0)
+	ref = NULL;
+	if (*rest != '\0' && size != 0)
 		ref = ft_memalloc(sizeof(size_t) * 2);
-	if (ref && *rest != 0 && end && ft_create_item(ctrl, ctrl->nb_item) != NULL)
+	if (ref && ft_create_item(ctrl, ctrl->nb_item) != NULL)
 	{
 		ref[0] = fd;
 		ref[1] = 0;
 		ctrl->last_ac->content_ref = ref;
-		ctrl->last_ac->content = ft_memjoin(rest, end, NULL, 0);
-		ctrl->last_ac->content_size = end;
+		ctrl->last_ac->content = ft_memjoin(rest, size, NULL, 0);
+		ctrl->last_ac->content_size = size;
+		return (1);
 	}
+	return (-1);
 }
 
 static int	ft_read_line(const int fd, char **line, t_ctrl *ctrl, size_t res)
@@ -54,7 +56,7 @@ static int	ft_read_line(const int fd, char **line, t_ctrl *ctrl, size_t res)
 		i[2] = i[0];
 	}
 	if (i[1] < i[2])
-		ft_stock_data(fd, &tmp[i[1] + 1], ctrl, i[2] - (i[1] + 1));
+		return (ft_stock_data(fd, &tmp[i[1] + 1], ctrl, i[2] - (i[1] + 1)));
 	return ((int)i[2]);
 }
 
@@ -68,8 +70,8 @@ static int	ft_get_buff(const int fd, char **line, t_ctrl *cl, int *rest)
 	{
 		ref = (size_t *)cl->last_ac->content_ref;
 		lim = ft_memichr(((char *)(cl->last_ac->content)) + ref[1], '\n',
-									cl->last_ac->content_size);
-		if (lim != cl->last_ac->content_size + 1)
+									cl->last_ac->content_size - ref[1]);
+		if (lim != cl->last_ac->content_size + 1 - ref[1])
 		{
 			*rest = 42;
 			*line = ft_strnjoin(NULL, 0,
@@ -78,9 +80,9 @@ static int	ft_get_buff(const int fd, char **line, t_ctrl *cl, int *rest)
 		}
 		else
 			*line = ft_strnjoin(NULL, 0,
-								((char *)cl->last_ac->content), lim - 1);
-		if (lim == cl->last_ac->content_size + 1
-				|| ref[1] == cl->last_ac->content_size)
+							((char *)cl->last_ac->content), lim - 1 - ref[1]);
+		if (lim == cl->last_ac->content_size + 1 - ref[1]
+				|| ref[1] >= cl->last_ac->content_size)
 			ft_rm_item(cl, cl->last_ac->row);
 	}
 	return ((int)lim);
@@ -99,7 +101,7 @@ int			get_next_line(const int fd, char **line)
 	int				res[2];
 
 	ft_bzero(res, sizeof(res));
-	if (fd > 0)
+	if (fd > 0 && BUFF_SIZE > 0)
 	{
 		if (!ctrl)
 			ctrl = ft_init_ctrl();
@@ -107,11 +109,13 @@ int			get_next_line(const int fd, char **line)
 		res[1] = ft_get_buff(fd, line, ctrl, res);
 		if (res[0] != 42)
 			res[0] = ft_read_line(fd, line, ctrl, res[1]);
+		if (res[0] == 0 && !line)
+			res[0] = 1;
 		if (res[0] ==  -1 || res[0] == 0)
 			ft_rm_list(ctrl);
 	}
 	else
-		return (-1);
+		res[0] = -1;
 	if (res[0])
 		res[0] = 1;
 	return (res[0]);
