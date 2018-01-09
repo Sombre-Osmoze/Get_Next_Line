@@ -30,13 +30,10 @@ int main(int argc, char *argv[])
 
 	while (get_next_line(fd[i], &line))
 	{
-		ft_putendl(line);
 		if (line){
-			free(line); }
-	}
-	if (line) {
-		ft_putendl(line);
-		free(line);
+			ft_putendl(line);
+			free(line);
+		}
 	}
 	if (argc > 1)
 		while (--i >= 0) {
