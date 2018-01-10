@@ -139,7 +139,6 @@
 				ED4DAFB81FCD0AD700F5B191 /* Sources */,
 				ED4DAFB91FCD0AD700F5B191 /* Frameworks */,
 				ED4DAFBA1FCD0AD700F5B191 /* CopyFiles */,
-				EDC4467D1FF2DBA700BFC2EC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -198,22 +197,6 @@
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		EDC4467D1FF2DBA700BFC2EC /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		ED4DAFB81FCD0AD700F5B191 /* Sources */ = {

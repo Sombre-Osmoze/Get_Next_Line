@@ -24,11 +24,11 @@ static int	ft_stock_data(int fd, char *rest, t_ctrl *ctrl, size_t size)
 		ref[0] = fd;
 		ref[1] = 0;
 		ctrl->last_ac->content_ref = ref;
-		ctrl->last_ac->content = ft_strnjoin(rest, size, NULL, 0);
+		ctrl->last_ac->content = ft_memjoin(rest, size, NULL, 0);
 		ctrl->last_ac->content_size = size;
 		return (1);
 	}
-	return (-1);
+	return (1);
 }
 
 static int	ft_read_line(const int fd, char **line, t_ctrl *ctrl, size_t res)
@@ -88,7 +88,7 @@ static int	ft_get_buff(const int fd, char **line, t_ctrl *cl, int *rest)
 	return ((int)lim);
 }
 
-/**
+/*
 ** Renvoie un fichier ligne par ligne dans un tableau de 'char' alloué
 ** @param fd File descriptor -> "open()"
 ** @param line Le tableau de 'char' contenant la ligne actuelle
@@ -97,11 +97,12 @@ static int	ft_get_buff(const int fd, char **line, t_ctrl *cl, int *rest)
 
 int			get_next_line(const int fd, char **line)
 {
+	 
 	static t_ctrl	*ctrl;
 	int				res[2];
 
 	ft_bzero(res, sizeof(res));
-	if (fd > 0 && BUFF_SIZE > 0) // verifier si fd est a ete open et NULL et fd < 0 cqr 0 est STDOUT
+	if (fd > -1 && BUFF_SIZE > 0 && line)
 	{
 		if (!ctrl)
 			ctrl = ft_init_ctrl();
@@ -111,7 +112,7 @@ int			get_next_line(const int fd, char **line)
 			res[0] = ft_read_line(fd, line, ctrl, res[1]);
 		if (res[0] == 0 && !line)
 			res[0] = 1;
-		if (res[0] == -1 || res[0] == 0)
+		if (res[0] == -1 || !res[0])
 			ft_rm_list(ctrl);
 	}
 	else

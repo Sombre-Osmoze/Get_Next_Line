@@ -31,6 +31,7 @@ int main(int argc, char *argv[])
 	while (get_next_line(fd[i], &line))
 	{
 		if (line){
+			sleep(2);
 			ft_putendl(line);
 			free(line);
 		}
