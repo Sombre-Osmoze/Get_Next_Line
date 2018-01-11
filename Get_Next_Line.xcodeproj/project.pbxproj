@@ -90,6 +90,7 @@
 				ED4DAFC81FCD0BAE00F5B191 /* Tests */,
 				ED79FCF81FEDA51800EB15A1 /* ft.xcodeproj */,
 				ED4DAFBD1FCD0AD700F5B191 /* Products */,
+				EDC963692006A35800E39B05 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +128,13 @@
 				ED79FCFE1FEDA51900EB15A1 /* libft.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		EDC963692006A35800E39B05 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

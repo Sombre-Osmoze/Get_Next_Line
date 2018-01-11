@@ -97,7 +97,6 @@ static int	ft_get_buff(const int fd, char **line, t_ctrl *cl, int *rest)
 
 int			get_next_line(const int fd, char **line)
 {
-	 
 	static t_ctrl	*ctrl;
 	int				res[2];
 
@@ -112,7 +111,7 @@ int			get_next_line(const int fd, char **line)
 			res[0] = ft_read_line(fd, line, ctrl, res[1]);
 		if (res[0] == 0 && !line)
 			res[0] = 1;
-		if (res[0] == -1 || !res[0])
+		if (res[0] == -1)
 			ft_rm_list(ctrl);
 	}
 	else
