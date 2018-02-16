@@ -101,7 +101,7 @@ int			get_next_line(const int fd, char **line)
 	int				res[2];
 
 	ft_bzero(res, sizeof(res));
-	if (fd > -1 && BUFF_SIZE > 0 && line)
+	if (fd > -1 && BUFF_SIZE >= 0 && line)
 	{
 		if (!ctrl)
 			ctrl = ft_init_ctrl();

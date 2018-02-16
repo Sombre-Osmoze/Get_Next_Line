@@ -1,0 +1,39 @@
+Last login: Mon Feb  5 23:14:28 on ttys001
+Bienvenue sur MarcusBook :
+
+marcusflorentin (0) (0) ~>
+~ : cd Desktop/
+
+marcusflorentin (0) (0) ~>
+Desktop : ls
+$RECYCLE.BIN/                                    Capture d’écran 2018-02-04 à 14.53.23.png        Thumbs.db*
+42FileChecker/                                   ControlStripAppearance.car                       VibrantLightAppearance.car
+Capture d’écran 2018-02-04 à 14.51.40.png        Get_Next_Line/                                   desktop.ini*
+
+marcusflorentin (0) (0) ~>
+Desktop : touch main.c
+
+marcusflorentin (0) (0) ~>
+Desktop : nn main.c 
+
+marcusflorentin (0) (0) ~>
+Desktop : touch main.c
+
+marcusflorentin (0) (0) ~>
+Desktop : gcc main.c 
+main.c:8:21: warning: data argument not used by format string
+      [-Wformat-extra-args]
+        printf("Test : ",  "");
+               ~~~~~~~~~   ^
+1 warning generated.
+
+marcusflorentin (0) (0) ~>
+Desktop : 
+
+
+
+
+
+
+
+
