@@ -75,16 +75,17 @@ static int	ft_get_buff(const int fd, char **line, t_ctrl *cl, int *rest)
 		{
 			*rest = 42;
 			*line = ft_strnjoin(NULL, 0,
-								((char *)cl->last_ac->content) + ref[1], lim);
+								((char *)cl->last_ac->content) + ref[1], lim + 1);
 			ref[1] += lim + 1;
 		}
 		else
 			*line = ft_strnjoin(NULL, 0,
-							((char *)cl->last_ac->content), lim - 1 - ref[1]);
+							((char *)cl->last_ac->content), lim - ref[1] + 1);
 		if (lim == cl->last_ac->content_size + 1 - ref[1]
 				|| ref[1] >= cl->last_ac->content_size)
 			ft_rm_item(cl, cl->last_ac->row);
 	}
+
 	return ((int)lim);
 }
 
