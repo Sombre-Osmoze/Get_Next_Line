@@ -5,119 +5,93 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflorent <mflorent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 04:16:39 by marcusflo         #+#    #+#             */
-/*   Updated: 2017/11/28 04:16:44 by marcusflo        ###   ########.fr       */
+/*   Created: 2017/11/20 21:41:12 by mflorent          #+#    #+#             */
+/*   Updated: 2017/12/13 17:20:02 by mflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int	ft_stock_data(int fd, char *rest, t_ctrl *ctrl, size_t size)
+static char		*fill(char *buff, int i)
 {
-	size_t	*ref;
-
-	ref = NULL;
-	if (*rest != '\0' && size != 0)
-		ref = ft_memalloc(sizeof(size_t) * 2);
-	if (ref && ft_create_item(ctrl, ctrl->nb_item) != NULL)
+	while (buff[i])
 	{
-		ref[0] = fd;
-		ref[1] = 0;
-		ctrl->last_ac->content_ref = ref;
-		ctrl->last_ac->content = ft_memjoin(rest, size, NULL, 0);
-		ctrl->last_ac->content_size = size;
-		return (1);
+		buff[i] = '\0';
+		i += 1;
 	}
+	return (buff);
+}
+
+static char		*passe(char *buffer, int j)
+{
+	int			i;
+
+	i = 0;
+	while (buffer[i] && buffer[j])
+		buffer[i++] = buffer[j++];
+	buffer = fill(buffer, i);
+	return (buffer);
+}
+
+static int		len(char *buffer, char *b_lines)
+{
+	int			i;
+	int			j;
+
+	i = 0;
+	j = 0;
+	while (b_lines && b_lines[j])
+		j++;
+	while (buffer[i] != '\n' && buffer[i])
+		i++;
+	return (i + j);
+}
+
+static char		*ft_realloc(char *b_lines, char *buffer, int *var)
+{
+	char		*tmp;
+	int			i;
+	int			j;
+
+	i = 0;
+	j = 0;
+	if (!(tmp = (char *)malloc(sizeof(char) * (len(buffer, b_lines)) + 1)))
+		return (NULL);
+	while (b_lines && b_lines[i])
+	{
+		tmp[i] = b_lines[i];
+		i++;
+	}
+	while (buffer[j] && buffer[j] != '\n')
+		tmp[i++] = buffer[j++];
+	tmp[i] = '\0';
+	if (buffer[j] == '\n')
+		*var = 1;
+	j++;
+	buffer = passe(buffer, j);
+	free(b_lines);
+	return (tmp);
+}
+
+int				get_next_line(const int fd, char **line)
+{
+	static char	buffer[12288][BUFF_SIZE + 1];
+	int			ret;
+	int			var;
+
+	ret = -1;
+	var = 0;
+	if (fd < 0 || !line || fd > 12287)
+		return (-1);
+	if ((*line = ft_realloc(NULL, buffer[fd], &var)) == NULL)
+		return (-1);
+	while (ret != 0 && var == 0)
+	{
+		if ((ret = read(fd, buffer[fd], BUFF_SIZE)) < 0
+			|| (*line = ft_realloc(*line, buffer[fd], &var)) == NULL)
+			return (-1);
+	}
+	if (ret == 0 && *line[0] == '\0')
+		return (0);
 	return (1);
-}
-
-static int	ft_read_line(const int fd, char **line, t_ctrl *ctrl, size_t res)
-{
-	char			tmp[BUFF_SIZE + 1];
-	size_t			i[3];
-	char			*buff;
-
-	ft_bzero(i, sizeof(i));
-	i[1] = BUFF_SIZE + 1;
-	while (i[1] == BUFF_SIZE + 1 && (i[0] = read(fd, tmp, BUFF_SIZE)) > 0)
-	{
-		i[1] = ft_memichr(tmp, '\n', BUFF_SIZE);
-		if (i[1] == BUFF_SIZE + 1)
-			buff = ft_strnjoin(*line, res, tmp, i[0]);
-		else
-			buff = ft_strnjoin(*line, res, tmp, i[1]);
-		if (*line)
-			free(*line);
-		*line = buff;
-		if (i[1] != BUFF_SIZE + 1)
-			res += i[1];
-		else
-			res += i[0];
-		i[2] = i[0];
-	}
-	if (i[1] < i[2])
-		return (ft_stock_data(fd, &tmp[i[1] + 1], ctrl, i[2] - (i[1] + 1)));
-	return ((int)i[2]);
-}
-
-static int	ft_get_buff(const int fd, char **line, t_ctrl *cl, int *rest)
-{
-	size_t	lim;
-	size_t	*ref;
-
-	lim = 0;
-	if (cl && ft_search_item(cl, (const void *)&fd, 0, &ft_int_cmp))
-	{
-		ref = (size_t *)cl->last_ac->content_ref;
-		lim = ft_memichr(((char *)(cl->last_ac->content)) + ref[1], '\n',
-									cl->last_ac->content_size - ref[1]);
-		if (lim != cl->last_ac->content_size + 1 - ref[1])
-		{
-			*rest = 42;
-			*line = ft_strnjoin(NULL, 0,
-								((char *)cl->last_ac->content) + ref[1], lim + 1);
-			ref[1] += lim + 1;
-		}
-		else
-			*line = ft_strnjoin(NULL, 0,
-							((char *)cl->last_ac->content), lim - ref[1] + 1);
-		if (lim == cl->last_ac->content_size + 1 - ref[1]
-				|| ref[1] >= cl->last_ac->content_size)
-			ft_rm_item(cl, cl->last_ac->row);
-	}
-
-	return ((int)lim);
-}
-
-/*
-** Renvoie un fichier ligne par ligne dans un tableau de 'char' alloué
-** @param fd File descriptor -> "open()"
-** @param line Le tableau de 'char' contenant la ligne actuelle
-** @return Information sur le fichier
-*/
-
-int			get_next_line(const int fd, char **line)
-{
-	static t_ctrl	*ctrl;
-	int				res[2];
-
-	ft_bzero(res, sizeof(res));
-	if (fd > -1 && BUFF_SIZE >= 0 && line)
-	{
-		if (!ctrl)
-			ctrl = ft_init_ctrl();
-		*line = NULL;
-		res[1] = ft_get_buff(fd, line, ctrl, res);
-		if (res[0] != 42)
-			res[0] = ft_read_line(fd, line, ctrl, res[1]);
-		if (res[0] == 0 && !line)
-			res[0] = 1;
-		if (res[0] == -1)
-			ft_rm_list(ctrl);
-	}
-	else
-		res[0] = -1;
-	if (res[0])
-		res[0] = 1;
-	return (res[0]);
 }

@@ -1,7 +1,0 @@
-Nous arrivons maintenant dans le premier TP.
-Le but est de vous montrer que vous savez faire des choses avec ce que je vous ai appris.
-Car en effet, la théorie c'est bien, mais si on ne sait pas mettre tout cela en pratique de manière concrète… ça ne sert à rien d'avoir passé tout ce temps à apprendre.
-
-Croyez-le ou non, vous avez déjà le niveau pour réaliser un premier programme amusant.
-C'est un petit jeu en mode console (les programmes en fenêtres arriveront plus tard je vous le rappelle).
-Le principe du jeu est simple et le jeu est facile à programmer. C'est pour cela que j'ai choisi d'en faire le premier TP du cours.
