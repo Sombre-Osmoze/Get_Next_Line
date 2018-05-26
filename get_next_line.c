@@ -89,7 +89,7 @@ static int	ft_get_buff(const int fd, char **line, t_ctrl *cl, int *rest)
 	return ((int)lim);
 }
 
-/*
+/**
 ** Renvoie un fichier ligne par ligne dans un tableau de 'char' alloué
 ** @param fd File descriptor -> "open()"
 ** @param line Le tableau de 'char' contenant la ligne actuelle

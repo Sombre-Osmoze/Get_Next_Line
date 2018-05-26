@@ -10,6 +10,11 @@
 		450D22AD1FE1711D00E668F3 /* README.md in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED2098961FD0455F00F45D1D /* README.md */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		450D22AE1FE1711F00E668F3 /* get_next_line.fr.pdf in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED2098711FD02BA900F45D1D /* get_next_line.fr.pdf */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		45A0F9C81FDF9B0D006B3941 /* auteur in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED2098941FD0455F00F45D1D /* auteur */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		ED162D3D20B904C500AA3F5C /* GNLTest.m in Sources */ = {isa = PBXBuildFile; fileRef = ED162D3C20B904C500AA3F5C /* GNLTest.m */; };
+		ED162D4220B9051400AA3F5C /* get_next_line.c in Sources */ = {isa = PBXBuildFile; fileRef = ED4DAFCD1FCD0C6B00F5B191 /* get_next_line.c */; };
+		ED162D4320B9052300AA3F5C /* libft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED79FCFE1FEDA51900EB15A1 /* libft.a */; };
+		ED162D4620B9091B00AA3F5C /* File.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED407B431FCD5E36005FF1D5 /* File.txt */; };
+		ED162D4720B9091E00AA3F5C /* lol.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED50B40C1FE686D0004987FB /* lol.txt */; };
 		ED2099631FD0485700F45D1D /* File.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED407B431FCD5E36005FF1D5 /* File.txt */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		ED4DAFCB1FCD0BD800F5B191 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = ED4DAFCA1FCD0BD800F5B191 /* main.c */; };
 		ED4DAFCE1FCD0C6B00F5B191 /* get_next_line.c in Sources */ = {isa = PBXBuildFile; fileRef = ED4DAFCD1FCD0C6B00F5B191 /* get_next_line.c */; settings = {COMPILER_FLAGS = "-Wall -Wextra -Weverything"; }; };
@@ -28,6 +33,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		ED162D4520B9090900AA3F5C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				ED162D4620B9091B00AA3F5C /* File.txt in CopyFiles */,
+				ED162D4720B9091E00AA3F5C /* lol.txt in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED4DAFBA1FCD0AD700F5B191 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -45,6 +61,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ED162D3A20B904C500AA3F5C /* GNLTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GNLTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED162D3C20B904C500AA3F5C /* GNLTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GNLTest.m; sourceTree = "<group>"; };
+		ED162D3E20B904C500AA3F5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED162D4420B906FF00AA3F5C /* GNLTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GNLTest.h; sourceTree = "<group>"; };
 		ED2098711FD02BA900F45D1D /* get_next_line.fr.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = get_next_line.fr.pdf; sourceTree = "<group>"; };
 		ED2098941FD0455F00F45D1D /* auteur */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = auteur; sourceTree = "<group>"; };
 		ED2098961FD0455F00F45D1D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -60,6 +80,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		ED162D3720B904C500AA3F5C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED162D4320B9052300AA3F5C /* libft.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED4DAFB91FCD0AD700F5B191 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -71,6 +99,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED162D3B20B904C500AA3F5C /* GNLTest */ = {
+			isa = PBXGroup;
+			children = (
+				ED162D3C20B904C500AA3F5C /* GNLTest.m */,
+				ED162D4420B906FF00AA3F5C /* GNLTest.h */,
+				ED162D3E20B904C500AA3F5C /* Info.plist */,
+			);
+			path = GNLTest;
+			sourceTree = "<group>";
+		};
 		ED4248BF1FFBA81F0045D846 /* libft */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +127,7 @@
 				ED4DAFC61FCD0B7300F5B191 /* Get_Next_Line */,
 				ED4DAFC81FCD0BAE00F5B191 /* Tests */,
 				ED79FCF81FEDA51800EB15A1 /* ft.xcodeproj */,
+				ED162D3B20B904C500AA3F5C /* GNLTest */,
 				ED4DAFBD1FCD0AD700F5B191 /* Products */,
 				EDC963692006A35800E39B05 /* Frameworks */,
 			);
@@ -98,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				ED4DAFBC1FCD0AD700F5B191 /* Get_Next_Line */,
+				ED162D3A20B904C500AA3F5C /* GNLTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,6 +180,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		ED162D3920B904C500AA3F5C /* GNLTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED162D3F20B904C500AA3F5C /* Build configuration list for PBXNativeTarget "GNLTest" */;
+			buildPhases = (
+				ED162D3620B904C500AA3F5C /* Sources */,
+				ED162D3720B904C500AA3F5C /* Frameworks */,
+				ED162D3820B904C500AA3F5C /* Resources */,
+				ED162D4520B9090900AA3F5C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GNLTest;
+			productName = GNLTest;
+			productReference = ED162D3A20B904C500AA3F5C /* GNLTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		ED4DAFBB1FCD0AD700F5B191 /* Get_Next_Line */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED4DAFC31FCD0AD700F5B191 /* Build configuration list for PBXNativeTarget "Get_Next_Line" */;
@@ -167,6 +225,10 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Marcus Florentin";
 				TargetAttributes = {
+					ED162D3920B904C500AA3F5C = {
+						CreatedOnToolsVersion = 9.3.1;
+						ProvisioningStyle = Automatic;
+					};
 					ED4DAFBB1FCD0AD700F5B191 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
@@ -192,6 +254,7 @@
 			projectRoot = "";
 			targets = (
 				ED4DAFBB1FCD0AD700F5B191 /* Get_Next_Line */,
+				ED162D3920B904C500AA3F5C /* GNLTest */,
 			);
 		};
 /* End PBXProject section */
@@ -206,7 +269,26 @@
 		};
 /* End PBXReferenceProxy section */
 
+/* Begin PBXResourcesBuildPhase section */
+		ED162D3820B904C500AA3F5C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		ED162D3620B904C500AA3F5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED162D3D20B904C500AA3F5C /* GNLTest.m in Sources */,
+				ED162D4220B9051400AA3F5C /* get_next_line.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED4DAFB81FCD0AD700F5B191 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -219,6 +301,34 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		ED162D4020B904C500AA3F5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Z8Q82L44LS;
+				INFOPLIST_FILE = GNLTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = oz.osmoze.GNLTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		ED162D4120B904C500AA3F5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Z8Q82L44LS;
+				INFOPLIST_FILE = GNLTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = oz.osmoze.GNLTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		ED4DAFC11FCD0AD700F5B191 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -357,6 +467,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		ED162D3F20B904C500AA3F5C /* Build configuration list for PBXNativeTarget "GNLTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED162D4020B904C500AA3F5C /* Debug */,
+				ED162D4120B904C500AA3F5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		ED4DAFB71FCD0AD700F5B191 /* Build configuration list for PBXProject "Get_Next_Line" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -14,6 +14,9 @@ int main(int argc, char *argv[])
 	int fd[argc];
 	int i = 0;
 
+	if (argc == 0 || argc == 1)
+		exit(1);
+
 	while (i  < argc)
 		fd[i++] = 0;
 	i = 1;
@@ -35,7 +38,7 @@ int main(int argc, char *argv[])
 		while (get_next_line(fd[i], &line))
 		{
 			if (line){
-					//			sleep(2);
+								sleep(2);
 				ft_putendl(line);
 				free(line);
 			}
