@@ -29,7 +29,7 @@
 
 	NSString *allFile = [[NSString alloc] initWithContentsOfFile:@"/Users/marcusflorentin/Work-Pro-dev/Get_Next_Line/lol.txt" encoding: NSUTF8StringEncoding error:nil];
 
-	NSString *testFile = @"";
+	NSMutableString *testFile = [@"" mutableCopy];
 
 	char *line = NULL;
 	int fd[nbFD];
@@ -60,9 +60,11 @@
 		{
 			if (line){
 
-				[testFile stringByAppendingString:[NSString stringWithFormat:@"%s", line]];
+				[testFile appendString:[NSString stringWithCString:line encoding:NSUTF8StringEncoding]];
+				[testFile appendString:@"\n"];
+
 				free(line);
-				sleep(3);
+//				sleep(3);
 			}
 
 		}
@@ -76,6 +78,30 @@
 			if (fd[i] != -1)
 				close(fd[i]);
 		}
+
+	free(fileName);
+}
+
+
+/**
+ Cette série de tests, s'occupe de vérifé les retours d'erreur de la fonction GNL pour un "File descriptor" ("FD") négatif
+ */
+- (void)testFiledescriptorsNegative {
+
+	XCTAssertEqual(get_next_line(-99, nil), -1, "Mauvais retour : devrait retourné \"-1\"");
+	XCTAssertEqual(get_next_line(-1, nil), -1, "Mauvais retour : devrait retourné \"-1\"");
+
+}
+
+- (void)testClosenFileDescriptor {
+
+	char *line = "Marcus";
+	int test_fd = 42;
+
+
+	close(test_fd);
+
+	XCTAssertEqual(get_next_line(test_fd, &line), -1, "Get_Next_Line ne retourne pas \"-1\" si le file descriptor est fermé");
 }
 
 - (void)testPerformanceExample {

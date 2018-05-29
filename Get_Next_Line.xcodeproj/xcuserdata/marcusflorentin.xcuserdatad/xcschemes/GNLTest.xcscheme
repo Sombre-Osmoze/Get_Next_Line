@@ -38,6 +38,11 @@
                BlueprintName = "GNLTest"
                ReferencedContainer = "container:Get_Next_Line.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "GNLTest/testPerformanceExample">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

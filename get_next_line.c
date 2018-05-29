@@ -28,7 +28,7 @@ static int	ft_stock_data(int fd, char *rest, t_ctrl *ctrl, size_t size)
 		ctrl->last_ac->content_size = size;
 		return (1);
 	}
-	return (1);
+	return (-1);
 }
 
 static int	ft_read_line(const int fd, char **line, t_ctrl *ctrl, size_t res)
@@ -55,7 +55,7 @@ static int	ft_read_line(const int fd, char **line, t_ctrl *ctrl, size_t res)
 			res += i[0];
 		i[2] = i[0];
 	}
-	if (i[1] < i[2])
+	if (i[1] < i[2] && tmp[i[1] + 1])
 		return (ft_stock_data(fd, &tmp[i[1] + 1], ctrl, i[2] - (i[1] + 1)));
 	return ((int)i[2]);
 }
@@ -69,23 +69,20 @@ static int	ft_get_buff(const int fd, char **line, t_ctrl *cl, int *rest)
 	if (cl && ft_search_item(cl, (const void *)&fd, 0, &ft_int_cmp))
 	{
 		ref = (size_t *)cl->last_ac->content_ref;
-		lim = ft_memichr(((char *)(cl->last_ac->content)) + ref[1], '\n',
+		lim = ft_memichr((char *)cl->last_ac->content + ref[1], '\n',
 									cl->last_ac->content_size - ref[1]);
 		if (lim != cl->last_ac->content_size + 1 - ref[1])
 		{
 			*rest = 42;
-			*line = ft_strnjoin(NULL, 0,
-								((char *)cl->last_ac->content) + ref[1], lim + 1);
+			*line = ft_strnjoin(NULL, 0, (char *)cl->last_ac->content, lim);
 			ref[1] += lim + 1;
 		}
 		else
-			*line = ft_strnjoin(NULL, 0,
-							((char *)cl->last_ac->content), lim - ref[1] + 1);
+			*line = ft_strnjoin(NULL, 0, (char *)cl->last_ac->content, lim + 1);
 		if (lim == cl->last_ac->content_size + 1 - ref[1]
 				|| ref[1] >= cl->last_ac->content_size)
 			ft_rm_item(cl, cl->last_ac->row);
 	}
-
 	return ((int)lim);
 }
 
@@ -117,7 +114,7 @@ int			get_next_line(const int fd, char **line)
 	}
 	else
 		res[0] = -1;
-	if (res[0])
+	if (res[0] >= 1)
 		res[0] = 1;
 	return (res[0]);
 }
