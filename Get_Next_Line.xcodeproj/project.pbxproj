@@ -23,6 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		ED012BF220BE3D6C004DA2C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED79FCF81FEDA51800EB15A1 /* ft.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ED012BE620BE3424004DA2C3;
+			remoteInfo = FunctionTests;
+		};
 		ED79FCFD1FEDA51900EB15A1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ED79FCF81FEDA51800EB15A1 /* ft.xcodeproj */;
@@ -69,7 +76,6 @@
 		ED2098941FD0455F00F45D1D /* auteur */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = auteur; sourceTree = "<group>"; };
 		ED2098961FD0455F00F45D1D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ED407B431FCD5E36005FF1D5 /* File.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = File.txt; path = Tests/File.txt; sourceTree = "<group>"; };
-		ED4248C01FFBA81F0045D846 /* libft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libft.h; sourceTree = "<group>"; };
 		ED4DAFBC1FCD0AD700F5B191 /* Get_Next_Line */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Get_Next_Line; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED4DAFC91FCD0BD800F5B191 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		ED4DAFCA1FCD0BD800F5B191 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
@@ -109,18 +115,9 @@
 			path = GNLTest;
 			sourceTree = "<group>";
 		};
-		ED4248BF1FFBA81F0045D846 /* libft */ = {
-			isa = PBXGroup;
-			children = (
-				ED4248C01FFBA81F0045D846 /* libft.h */,
-			);
-			path = libft;
-			sourceTree = "<group>";
-		};
 		ED4DAFB31FCD0AD700F5B191 = {
 			isa = PBXGroup;
 			children = (
-				ED4248BF1FFBA81F0045D846 /* libft */,
 				ED2098941FD0455F00F45D1D /* auteur */,
 				ED2098961FD0455F00F45D1D /* README.md */,
 				ED2098711FD02BA900F45D1D /* get_next_line.fr.pdf */,
@@ -166,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				ED79FCFE1FEDA51900EB15A1 /* libft.a */,
+				ED012BF320BE3D6C004DA2C3 /* FunctionTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -260,6 +258,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		ED012BF320BE3D6C004DA2C3 /* FunctionTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = FunctionTests.xctest;
+			remoteRef = ED012BF220BE3D6C004DA2C3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		ED79FCFE1FEDA51900EB15A1 /* libft.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -460,6 +465,11 @@
 					"$(PROJECT_DIR)/libft",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = (
+					"-Werror",
+					"-Wextra",
+					"-Wall",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

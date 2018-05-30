@@ -62,14 +62,12 @@
 
 				[testFile appendString:[NSString stringWithCString:line encoding:NSUTF8StringEncoding]];
 				[testFile appendString:@"\n"];
-
 				free(line);
-//				sleep(3);
 			}
 
 		}
 
-		XCTAssertEqualObjects(allFile, testFile);
+		XCTAssertEqualObjects(testFile, allFile);
 		i++;
 	} while (i + 1 < nbFD);
 
@@ -101,7 +99,8 @@
 
 	close(test_fd);
 
-	XCTAssertEqual(get_next_line(test_fd, &line), -1, "Get_Next_Line ne retourne pas \"-1\" si le file descriptor est fermé");
+
+	XCTAssertEqual(get_next_line(test_fd, &line), read(test_fd, &line, BUFF_SIZE), "Get_Next_Line ne retourne pas \"-1\" si le file descriptor est fermé");
 }
 
 - (void)testPerformanceExample {
