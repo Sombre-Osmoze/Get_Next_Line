@@ -57,6 +57,9 @@
             </BuildableReference>
             <SkippedTests>
                <Test
+                  Identifier = "GNLTest/testClosenFileDescriptor">
+               </Test>
+               <Test
                   Identifier = "GNLTest/testPerformanceExample">
                </Test>
             </SkippedTests>
