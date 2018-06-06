@@ -16,8 +16,9 @@
     // Put setup code here. This method is called before the invocation of each test method in the class.
 
 	nbFD = 2;
-	fileName = malloc(sizeof(char * ) * 2);
+	fileName = malloc(sizeof(char * ) * 3);
 	fileName[1] = "/Users/marcusflorentin/Work-Pro-dev/Get_Next_Line/lol.txt";
+	fileName[2] = "/Users/marcusflorentin/Work-Pro-dev/Get_Next_Line/lol.txt";
 }
 
 - (void)tearDown {
@@ -27,7 +28,7 @@
 
 - (void)testGNL {
 
-	NSString *allFile = [[NSString alloc] initWithContentsOfFile:@"/Users/marcusflorentin/Work-Pro-dev/Get_Next_Line/lol.txt" encoding: NSUTF8StringEncoding error:nil];
+	NSString *allFile = [[NSString alloc] initWithContentsOfFile:[NSString stringWithCString:fileName[1] encoding:NSUTF8StringEncoding] encoding: NSUTF8StringEncoding error:nil];
 
 	NSMutableString *testFile = [@"" mutableCopy];
 
@@ -91,6 +92,36 @@
 
 }
 
+
+- (void)testgnl7_1 {
+
+	char		*line;
+	int			fd;
+	int			ret;
+	int			count_lines;
+	int			errors;
+
+	fd = open("gnl7_1.txt", O_RDONLY);
+	if (fd > 2)
+	{
+		count_lines = 0;
+		errors = 0;
+		line = NULL;
+		while ((ret = get_next_line(fd, &line)) > 0)
+		{
+			if (count_lines == 0 && strcmp(line, "12345678") != 0)
+				errors++;
+			count_lines++;
+			if (count_lines > 50)
+				break ;
+		}
+		close(fd);
+		XCTAssertEqual(count_lines, 1);
+		XCTAssertEqual(errors, 0);
+	}
+
+}
+
 - (void)testClosenFileDescriptor {
 
 	char *line = "Marcus";
@@ -100,14 +131,29 @@
 	close(test_fd);
 
 
-	XCTAssertEqual(get_next_line(test_fd, &line), read(test_fd, &line, BUFF_SIZE), "Get_Next_Line ne retourne pas \"-1\" si le file descriptor est fermé");
+	XCTAssertEqual(get_next_line(test_fd, &line), read(test_fd, &line, BUFF_SIZE));
 }
 
-- (void)testPerformanceExample {
+- (void)testPerformanceManRsync {
     // This is an example of a performance test case.
+	int fd = open(fileName[2], O_RDONLY);
+	char *line = NULL;
+	char **p_line = &line;
+
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
+		while (get_next_line(fd, p_line))
+		{
+			if (*p_line){
+
+				free(*p_line);
+			}
+
+		}
+
     }];
+
+	close(fd);
 }
 
 @end
