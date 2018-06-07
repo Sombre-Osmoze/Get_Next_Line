@@ -37,10 +37,7 @@ static long	ft_read_line(const int fd, char **line, t_ctrl *ctrl, size_t res)
 	long			i[3];
 	char			*buff;
 
-	i[0] = -1;
-	i[1] = -1;
-	i[2] = -1;
-//	ft_bzero(i, sizeof(i));
+	ft_longset(i, -1, sizeof(i));
 	i[1] = BUFF_SIZE + 1;
 	while (i[1] == BUFF_SIZE + 1 && (i[0] = read(fd, tmp, BUFF_SIZE)) > 0)
 	{
