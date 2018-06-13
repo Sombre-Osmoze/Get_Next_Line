@@ -106,7 +106,8 @@ int			get_next_line(const int fd, char **line)
 		res[1] = ft_get_buff(fd, line, ctrl, res);
 		if (res[0] != 42)
 			res[0] = ft_read_line(fd, line, ctrl, res[1]);
-		if ((res[0] == -1 || res[0] == 0) && ctrl->nb_item == 1)
+		if (res[0] == -1 || (res[0] == 0 && ctrl->nb_item == 1
+								&& ft_search_item(ctrl, &fd, 0, &ft_int_cmp)))
 		{
 			ft_rm_list(ctrl);
 			ctrl = NULL;
