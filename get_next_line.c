@@ -49,10 +49,7 @@ static long	ft_read_line(const int fd, char **line, t_ctrl *ctrl, size_t res)
 		if (*line)
 			free(*line);
 		*line = buff;
-		if (i[1] != BUFF_SIZE + 1)
-			res += i[1];
-		else
-			res += i[0];
+		res += (i[1] != BUFF_SIZE + 1) ? i[1] : i[0];
 		i[2] = i[0];
 	}
 	if (i[0] == -1)
