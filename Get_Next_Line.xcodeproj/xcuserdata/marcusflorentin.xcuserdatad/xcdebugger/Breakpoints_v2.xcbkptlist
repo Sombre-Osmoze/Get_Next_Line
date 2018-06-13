@@ -9,28 +9,28 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "get_next_line.c"
-            timestampString = "550017709.047966"
+            filePath = "GNLTest/GNLTest.m"
+            timestampString = "550623927.679442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "ft_stock_data"
-            landmarkType = "9">
+            startingLineNumber = "250"
+            endingLineNumber = "250"
+            landmarkName = "-testMultiFileDescriptor"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "get_next_line.c"
-            timestampString = "550017739.5120699"
+            timestampString = "550623927.6800801"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "ft_read_line"
             landmarkType = "9">
          </BreakpointContent>

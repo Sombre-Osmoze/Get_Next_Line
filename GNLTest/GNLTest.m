@@ -18,13 +18,32 @@
 	nbFD = 2;
 	fileName = malloc(sizeof(char * ) * 3);
 	fileName[1] = "/Users/marcusflorentin/Work-Pro-dev/Get_Next_Line/lol.txt";
-	fileName[2] = "/Users/marcusflorentin/Work-Pro-dev/Get_Next_Line/lol.txt";
+	fileName[2] = "/Users/marcusflorentin/Work-Pro-dev/Get_Next_Line/File.txt";
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
+
+- (void)test_error_handling {
+
+	char 	*line = NULL;
+
+	XCTAssertEqual(get_next_line(-99, NULL), -1);
+	XCTAssertEqual(get_next_line(-1, NULL), -1);
+	XCTAssertEqual(get_next_line(-10000, NULL), -1);
+	XCTAssertEqual(get_next_line(1, NULL), -1);
+	XCTAssertEqual(get_next_line(99, NULL), -1);
+
+	XCTAssertEqual(get_next_line(-99, &line), -1);
+	XCTAssertEqual(get_next_line(-1, &line), -1);
+	XCTAssertEqual(get_next_line(-10000, &line), -1);
+
+	/* Not opened fd */
+	XCTAssertEqual(get_next_line(42, &line), -1);
+}
+
 
 - (void)testGNL {
 
@@ -92,6 +111,61 @@
 
 }
 
+- (void)testFew_lines_of_4 {
+
+	char 	*line;
+	int		out;
+	int		p[2];
+	int		fd;
+	int		ret;
+
+	out = dup(1);
+	pipe(p);
+
+	fd = 1;
+	dup2(p[1], fd);
+	write(fd, "abcd\n", 5);
+	write(fd, "efgh\n", 5);
+	write(fd, "ijkl\n", 5);
+	write(fd, "mnop\n", 5);
+	write(fd, "qrst\n", 5);
+	write(fd, "uvwx\n", 5);
+	write(fd, "yzab\n", 5);
+	close(p[1]);
+	dup2(out, fd);
+	get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"abcd");
+	free(line);
+
+	get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"efgh");
+	free(line);
+
+	get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"ijkl");
+	free(line);
+
+	get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"mnop");
+	free(line);
+
+	get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"qrst");
+	free(line);
+
+	get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"uvwx");
+	free(line);
+
+	get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"yzab");
+	free(line);
+
+	ret = get_next_line(p[0], &line);
+	XCTAssertEqual(ret, 0);
+	free(line);
+
+}
 
 - (void)testgnl7_1 {
 
@@ -132,6 +206,55 @@
 
 
 	XCTAssertEqual(get_next_line(test_fd, &line), read(test_fd, &line, BUFF_SIZE));
+}
+
+- (void)testLine_of_4 {
+
+	char 	*line;
+	int		out;
+	int		p[2];
+	int		fd;
+	int		ret;
+
+	out = dup(1);
+	pipe(p);
+
+	fd = 1;
+	dup2(p[1], fd);
+	write(fd, "abcd\n", 5);
+	close(p[1]);
+	dup2(out, fd);
+	get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"abcd");
+	ret = get_next_line(p[0], &line);
+	XCTAssertEqual(ret, 0);
+}
+
+- (void)testMultiFileDescriptor {
+
+	char *line = NULL;
+	int fdA = open(fileName[1], O_RDONLY);
+	int fdB = open(fileName[0], O_RDONLY);
+
+	NSString *textA = [[NSString alloc] initWithContentsOfFile:[NSString stringWithCString:fileName[1] encoding:NSUTF8StringEncoding] encoding: NSUTF8StringEncoding error:nil];
+	NSString *textB = [[NSString alloc] initWithContentsOfFile:[NSString stringWithCString:fileName[2] encoding:NSUTF8StringEncoding] encoding: NSUTF8StringEncoding error:nil];
+	NSArray *linesA = [textA componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+	NSArray *linesB = [textA componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+
+	get_next_line(fdA, &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], linesA[0]);
+	free(line);
+
+	get_next_line(fdB, &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], linesB[0]);
+	free(line);
+
+	get_next_line(fdA, &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], linesA[1]);
+	free(line);
+
+	close(fdA);
+	close(fdB);
 }
 
 - (void)testPerformanceManRsync {

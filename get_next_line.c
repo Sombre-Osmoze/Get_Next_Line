@@ -37,7 +37,7 @@ static long	ft_read_line(const int fd, char **line, t_ctrl *ctrl, size_t res)
 	long			i[3];
 	char			*buff;
 
-	ft_longset(i, -1, sizeof(i));
+	ft_longset(i, 0, 3);
 	i[1] = BUFF_SIZE + 1;
 	while (i[1] == BUFF_SIZE + 1 && (i[0] = read(fd, tmp, BUFF_SIZE)) > 0)
 	{
@@ -55,7 +55,9 @@ static long	ft_read_line(const int fd, char **line, t_ctrl *ctrl, size_t res)
 			res += i[0];
 		i[2] = i[0];
 	}
-	if (i[2] != -1 && i[1] < i[2] && tmp[i[1] + 1])
+	if (i[0] == -1)
+		return (-1);
+	if (i[1] < i[2] && tmp[i[1] + 1])
 		return (ft_stock_data(fd, &tmp[i[1] + 1], ctrl, i[2] - (i[1] + 1)));
 	return (i[2]);
 }
@@ -66,7 +68,7 @@ static long	ft_get_buff(const int fd, char **line, t_ctrl *cl, long *rest)
 	size_t	*ref;
 
 	lim = 0;
-	if (cl && ft_search_item(cl, (const void *)&fd, 0, &ft_int_cmp))
+	if (BUFF_SIZE > 1 && cl && ft_search_item(cl, &fd, 0, &ft_int_cmp))
 	{
 		ref = (size_t *)cl->last_ac->content_ref;
 		lim = ft_memichr((char *)cl->last_ac->content + ref[1], '\n',
@@ -86,7 +88,7 @@ static long	ft_get_buff(const int fd, char **line, t_ctrl *cl, long *rest)
 	return (lim);
 }
 
-/**
+/*
 ** Renvoie un fichier ligne par ligne dans un tableau de 'char' alloué
 ** @param fd File descriptor -> "open()"
 ** @param line Le tableau de 'char' contenant la ligne actuelle
@@ -96,7 +98,7 @@ static long	ft_get_buff(const int fd, char **line, t_ctrl *cl, long *rest)
 int			get_next_line(const int fd, char **line)
 {
 	static t_ctrl	*ctrl;
-	long				res[2];
+	long			res[2];
 
 	ft_bzero(res, sizeof(res));
 	if (fd > -1 && BUFF_SIZE >= 0 && line)
@@ -107,11 +109,14 @@ int			get_next_line(const int fd, char **line)
 		res[1] = ft_get_buff(fd, line, ctrl, res);
 		if (res[0] != 42)
 			res[0] = ft_read_line(fd, line, ctrl, res[1]);
-		if (res[0] == -1 || res[0] == 0)
+		if ((res[0] == -1 || res[0] == 0) && ctrl->nb_item == 1)
+		{
 			ft_rm_list(ctrl);
+			ctrl = NULL;
+		}
 	}
 	else
-		res[0] = -1;
+		return (-1);
 	if (res[0] >= 1)
 		res[0] = 1;
 	return ((int)res[0]);

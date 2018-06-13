@@ -63,6 +63,9 @@
                <Test
                   Identifier = "GNLTest/testPerformanceManRsync">
                </Test>
+               <Test
+                  Identifier = "GNLTest/testgnl7_1">
+               </Test>
             </SkippedTests>
          </TestableReference>
       </Testables>
@@ -73,7 +76,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      enableAddressSanitizer = "YES"
       enableASanStackUseAfterReturn = "YES"
       disableMainThreadChecker = "YES"
       launchStyle = "0"
@@ -101,11 +103,11 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "lol.txt"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "File.txt"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "auteur"
