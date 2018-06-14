@@ -69,7 +69,7 @@ static long    ft_get_buff(const int fd, char **line, t_ctrl *cl, long *rest)
     {
         ref = (size_t *)cl->last_ac->content_ref;
         lim = ft_memichr((char *)cl->last_ac->content + ref[1], '\n',
-                                    cl->last_ac->content_size - ref[1]);
+					cl->last_ac->content_size - ref[1]);
         if (lim != cl->last_ac->content_size - ref[1] + 1)
         {
             *rest = 42;
