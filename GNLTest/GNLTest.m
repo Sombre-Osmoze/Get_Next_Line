@@ -26,6 +26,37 @@
     [super tearDown];
 }
 
+- (void)test_gnl1_1 {
+	char		*line;
+	int			fd;
+	int			ret;
+	int			count_lines;
+	char		*filename;
+	int			errors;
+
+	filename = "/Users/marcusflorentin/Work-Pro-dev/Get_Next_Line/gnl1_1.txt";
+	fd = open(filename, O_RDONLY);
+	if (fd != -1)
+	{
+		count_lines = 0;
+		errors = 0;
+		line = NULL;
+		while ((ret = get_next_line(fd, &line)) > 0)
+		{
+			if (count_lines == 0 && strcmp(line, "1234567") != 0)
+				errors++;
+			count_lines++;
+			if (count_lines > 50)
+				break;
+		}
+		close(fd);
+		XCTAssertEqual(count_lines, 1, "-> must have returned '1' once instead of %d time(s)\n", count_lines);
+		XCTAssertEqual(errors, 0, "-> must have read \"1234567\" instead of \"%s\"\n", line);
+	}
+	else
+		printf("An error occured while opening file %s\n", filename);
+}
+
 - (void)test_error_handling {
 
 	char 	*line = NULL;
@@ -44,6 +75,48 @@
 	XCTAssertEqual(get_next_line(42, &line), -1);
 }
 
+- (void)testreturn_values {
+	char 	*line;
+	int		out;
+	int		p[2];
+	int		fd;
+	int		gnl_ret;
+
+	out = dup(1);
+	pipe(p);
+
+	fd = 1;
+	dup2(p[1], fd);
+	write(fd, "abc\n\n", 5);
+	close(p[1]);
+	dup2(out, fd);
+
+	/* Read abc and new line */
+	gnl_ret = get_next_line(p[0], &line);
+	XCTAssertEqual(gnl_ret, 1);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"abc");
+
+	/* Read new line */
+	gnl_ret = get_next_line(p[0], &line);
+	XCTAssertEqual(gnl_ret, 1);
+	if (!(line == NULL || *line == '\0')) {
+		XCTFail();
+	}
+
+	/* Read again, but meet EOF */
+	gnl_ret = get_next_line(p[0], &line);
+	XCTAssertEqual(gnl_ret, 0);
+	if (!(line == NULL || *line == '\0')) {
+		XCTFail();
+	}
+
+	/* Let's do it once again */
+	gnl_ret = get_next_line(p[0], &line);
+	XCTAssertEqual(gnl_ret, 0);
+	if (!(line == NULL || *line == '\0')) {
+		XCTFail();
+	}
+}
 
 - (void)testGNL {
 
