@@ -55,16 +55,7 @@
             </BuildableReference>
             <SkippedTests>
                <Test
-                  Identifier = "GNLTest/testGNL">
-               </Test>
-               <Test
                   Identifier = "GNLTest/testPerformanceExample">
-               </Test>
-               <Test
-                  Identifier = "GNLTest/testPerformanceManRsync">
-               </Test>
-               <Test
-                  Identifier = "GNLTest/testgnl7_1">
                </Test>
             </SkippedTests>
          </TestableReference>

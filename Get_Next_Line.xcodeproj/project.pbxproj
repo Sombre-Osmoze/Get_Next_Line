@@ -72,6 +72,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ED03A324210979FE00417069 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		ED162D3A20B904C500AA3F5C /* GNLTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GNLTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED162D3C20B904C500AA3F5C /* GNLTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GNLTest.m; sourceTree = "<group>"; };
 		ED162D3E20B904C500AA3F5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -177,6 +178,7 @@
 		EDC963692006A35800E39B05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ED03A324210979FE00417069 /* Cocoa.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -225,7 +227,7 @@
 		ED4DAFB41FCD0AD700F5B191 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Marcus Florentin";
 				TargetAttributes = {

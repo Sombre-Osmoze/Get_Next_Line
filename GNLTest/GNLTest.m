@@ -18,7 +18,7 @@
 	nbFD = 2;
 	fileName = malloc(sizeof(char * ) * 3);
 	fileName[1] = "/Users/marcusflorentin/Work-Pro-dev/Get_Next_Line/lol.txt";
-	fileName[2] = "/Users/marcusflorentin/Work-Pro-dev/Get_Next_Line/File.txt";
+	fileName[2] = "/Users/marcusflorentin/Work-Pro-dev/Get_Next_Line/Tests/File.txt";
 }
 
 - (void)tearDown {
@@ -237,24 +237,162 @@
 	int fdB = open(fileName[0], O_RDONLY);
 
 	NSString *textA = [[NSString alloc] initWithContentsOfFile:[NSString stringWithCString:fileName[1] encoding:NSUTF8StringEncoding] encoding: NSUTF8StringEncoding error:nil];
-	NSString *textB = [[NSString alloc] initWithContentsOfFile:[NSString stringWithCString:fileName[2] encoding:NSUTF8StringEncoding] encoding: NSUTF8StringEncoding error:nil];
 	NSArray *linesA = [textA componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 	NSArray *linesB = [textA componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 
 	get_next_line(fdA, &line);
 	XCTAssertEqualObjects([NSString stringWithUTF8String:line], linesA[0]);
+	if (line)
 	free(line);
 
 	get_next_line(fdB, &line);
 	XCTAssertEqualObjects([NSString stringWithUTF8String:line], linesB[0]);
-	free(line);
+//	if (line)
+//		free(line);
 
 	get_next_line(fdA, &line);
 	XCTAssertEqualObjects([NSString stringWithUTF8String:line], linesA[1]);
-	free(line);
-
+	if (line)
+		free(line);
+	
 	close(fdA);
 	close(fdB);
+}
+
+-(void)test_bonus_multiple_fd {
+
+	char	*line_fd0;
+	int		p_fd0[2];
+	int		fd0 = 0;
+	int		out_fd0 = dup(fd0);
+
+	char	*line_fd1;
+	int		p_fd1[2];
+	int		fd1 = 1;
+	int		out_fd1 = dup(fd1);
+
+	char	*line_fd2;
+	int		p_fd2[2];
+	int		fd2 = 2;
+	int		out_fd2 = dup(fd2);
+
+	char	*line_fd3;
+	int		p_fd3[2];
+	int		fd3 = 3;
+	int		out_fd3 = dup(fd3);
+
+	pipe(p_fd0);
+	dup2(p_fd0[1], fd0);
+	write(fd0, "aaa\nbbb\n", 8);
+	dup2(out_fd0, fd0);
+	close(p_fd0[1]);
+
+	pipe(p_fd1);
+	dup2(p_fd1[1], fd1);
+	write(fd1, "111\n222\n", 8);
+	dup2(out_fd1, fd1);
+	close(p_fd1[1]);
+
+	pipe(p_fd2);
+	dup2(p_fd2[1], fd2);
+	write(fd2, "www\nzzz\n", 8);
+	dup2(out_fd2, fd2);
+	close(p_fd2[1]);
+
+	pipe(p_fd3);
+	dup2(p_fd3[1], fd3);
+	write(fd3, "888\n999\n", 8);
+	dup2(out_fd3, fd3);
+	close(p_fd3[1]);
+
+	get_next_line(p_fd0[0], &line_fd0);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line_fd0], @"aaa");
+
+	get_next_line(p_fd1[0], &line_fd1);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line_fd1], @"111");
+
+	get_next_line(p_fd2[0], &line_fd2);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line_fd2], @"www");
+
+	get_next_line(p_fd3[0], &line_fd3);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line_fd3], @"888");
+
+	get_next_line(p_fd0[0], &line_fd0);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line_fd0], @"bbb");
+
+	get_next_line(p_fd1[0], &line_fd1);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line_fd1], @"222");
+
+	get_next_line(p_fd2[0], &line_fd2);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line_fd2], @"zzz");
+
+	get_next_line(p_fd3[0], &line_fd3);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line_fd3], @"999");
+
+}
+
+- (void)testfew_lines_of_16 {
+	char 	*line;
+	int		out;
+	int		p[2];
+	int		fd;
+	int		ret;
+
+	out = dup(1);
+	pipe(p);
+
+	fd = 1;
+	dup2(p[1], fd);
+	write(fd, "abcdefghijklmnop\n", 17);
+	write(fd, "qrstuvwxyzabcdef\n", 17);
+	write(fd, "ghijklmnopqrstuv\n", 17);
+	write(fd, "wxyzabcdefghijkl\n", 17);
+	write(fd, "mnopqrstuvwxyzab\n", 17);
+	write(fd, "cdefghijklmnopqr\n", 17);
+	write(fd, "stuvwxzabcdefghi\n", 17);
+	close(p[1]);
+	dup2(out, fd);
+	get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"abcdefghijklmnop");
+
+	get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"qrstuvwxyzabcdef");
+
+	get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"ghijklmnopqrstuv");
+
+	get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"wxyzabcdefghijkl");
+
+	get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"mnopqrstuvwxyzab");
+
+	get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"cdefghijklmnopqr");;;
+
+	get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"stuvwxzabcdefghi");
+
+	ret = get_next_line(p[0], &line);
+	XCTAssertEqual(ret, 0);
+}
+
+- (void)testline_without_nl {
+	char 	*line;
+	int		out;
+	int		p[2];
+	int		fd;
+
+	out = dup(1);
+	pipe(p);
+
+	fd = 1;
+	dup2(p[1], fd);
+	write(fd, "abcd", 4);
+	close(p[1]);
+	dup2(out, fd);
+	get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"abcd");
 }
 
 - (void)testPerformanceManRsync {

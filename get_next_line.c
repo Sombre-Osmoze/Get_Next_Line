@@ -78,7 +78,7 @@ static long	ft_get_buff(const int fd, char **line, t_ctrl *cl, long *rest)
 		}
 		else
 			*line = ft_memndup((char *)cl->last_ac->content + ref[1], lim - 1);
-		if (lim == cl->last_ac->content_size + 1 - ref[1]
+		if ((*rest != 42 && lim == cl->last_ac->content_size - ref[1] + 1)
 				|| ref[1] >= cl->last_ac->content_size)
 			ft_rm_item(cl, cl->last_ac->row);
 	}
@@ -107,11 +107,8 @@ int			get_next_line(const int fd, char **line)
 		if (res[0] != 42)
 			res[0] = ft_read_line(fd, line, ctrl, res[1]);
 		if (res[0] == -1 || (res[0] == 0 && ctrl->nb_item == 1
-								&& ft_search_item(ctrl, &fd, 0, &ft_int_cmp)))
-		{
-			ft_rm_list(ctrl);
-			ctrl = NULL;
-		}
+								&& ft_rm_item(ctrl, 0)))
+			ft_rm_list(&ctrl);
 	}
 	else
 		return (-1);
