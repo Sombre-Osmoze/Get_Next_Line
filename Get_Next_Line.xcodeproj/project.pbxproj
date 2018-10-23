@@ -20,8 +20,8 @@
 		ED4DAFCE1FCD0C6B00F5B191 /* get_next_line.c in Sources */ = {isa = PBXBuildFile; fileRef = ED4DAFCD1FCD0C6B00F5B191 /* get_next_line.c */; settings = {COMPILER_FLAGS = "-Wall -Wextra -Weverything"; }; };
 		ED50B40D1FE686D9004987FB /* lol.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED50B40C1FE686D0004987FB /* lol.txt */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		ED79FD001FEDABAF00EB15A1 /* libft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED79FCFE1FEDA51900EB15A1 /* libft.a */; };
-		EDC80EEA20C83870004C2327 /* gnl7_1.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = EDC80EE620C83740004C2327 /* gnl7_1.txt */; };
-		EDC80EEB20C8387F004C2327 /* gnl7_1.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = EDC80EE620C83740004C2327 /* gnl7_1.txt */; };
+		ED8BFE552173BF1E00B3AA6D /* TestFiles in Resources */ = {isa = PBXBuildFile; fileRef = ED8BFE542173BF1E00B3AA6D /* TestFiles */; };
+		ED8BFE602173C85A00B3AA6D /* TestFiles in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED8BFE542173BF1E00B3AA6D /* TestFiles */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,7 @@
 			files = (
 				ED162D4620B9091B00AA3F5C /* File.txt in CopyFiles */,
 				ED162D4720B9091E00AA3F5C /* lol.txt in CopyFiles */,
-				EDC80EEA20C83870004C2327 /* gnl7_1.txt in CopyFiles */,
+				ED8BFE602173C85A00B3AA6D /* TestFiles in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,7 +64,6 @@
 				45A0F9C81FDF9B0D006B3941 /* auteur in CopyFiles */,
 				450D22AE1FE1711F00E668F3 /* get_next_line.fr.pdf in CopyFiles */,
 				450D22AD1FE1711D00E668F3 /* README.md in CopyFiles */,
-				EDC80EEB20C8387F004C2327 /* gnl7_1.txt in CopyFiles */,
 				ED50B40D1FE686D9004987FB /* lol.txt in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,7 +87,7 @@
 		ED4DAFCD1FCD0C6B00F5B191 /* get_next_line.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = get_next_line.c; sourceTree = "<group>"; };
 		ED50B40C1FE686D0004987FB /* lol.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lol.txt; sourceTree = "<group>"; };
 		ED79FCF81FEDA51800EB15A1 /* ft.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ft.xcodeproj; path = ../libft/ft.xcodeproj; sourceTree = "<group>"; };
-		EDC80EE620C83740004C2327 /* gnl7_1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = gnl7_1.txt; sourceTree = "<group>"; };
+		ED8BFE542173BF1E00B3AA6D /* TestFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TestFiles; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +113,7 @@
 		ED162D3B20B904C500AA3F5C /* GNLTest */ = {
 			isa = PBXGroup;
 			children = (
+				ED8BFE542173BF1E00B3AA6D /* TestFiles */,
 				ED162D3C20B904C500AA3F5C /* GNLTest.m */,
 				ED162D4420B906FF00AA3F5C /* GNLTest.h */,
 				ED162D3E20B904C500AA3F5C /* Info.plist */,
@@ -161,7 +161,6 @@
 				ED4DAFCA1FCD0BD800F5B191 /* main.c */,
 				ED407B431FCD5E36005FF1D5 /* File.txt */,
 				ED50B40C1FE686D0004987FB /* lol.txt */,
-				EDC80EE620C83740004C2327 /* gnl7_1.txt */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -287,6 +286,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED8BFE552173BF1E00B3AA6D /* TestFiles in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

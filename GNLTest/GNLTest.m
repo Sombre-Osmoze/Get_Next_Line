@@ -19,6 +19,8 @@
 	fileName = malloc(sizeof(char * ) * 3);
 	fileName[1] = "/Users/marcusflorentin/Work-Pro-dev/Get_Next_Line/lol.txt";
 	fileName[2] = "/Users/marcusflorentin/Work-Pro-dev/Get_Next_Line/Tests/File.txt";
+
+	
 }
 
 - (void)tearDown {
@@ -34,7 +36,7 @@
 	char		*filename;
 	int			errors;
 
-	filename = "/Users/marcusflorentin/Work-Pro-dev/Get_Next_Line/gnl1_1.txt";
+	filename = "TestFiles/gnl1_1.txt";
 	fd = open(filename, O_RDONLY);
 	if (fd != -1)
 	{
@@ -54,7 +56,26 @@
 		XCTAssertEqual(errors, 0, "-> must have read \"1234567\" instead of \"%s\"\n", line);
 	}
 	else
-		printf("An error occured while opening file %s\n", filename);
+		XCTFail("An error occured while opening file %s\n", filename);
+}
+
+- (void)test_line_of_16_without_nl {
+	char 	*line;
+	int		out;
+	int		p[2];
+	int		fd;
+
+	out = dup(1);
+	pipe(p);
+
+	fd = 1;
+	dup2(p[1], fd);
+	write(fd, "mnopqrstuvwxyzab", 16);
+	close(p[1]);
+	dup2(out, fd);
+	get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"mnopqrstuvwxyzab");
+
 }
 
 - (void)test_error_handling {
@@ -72,6 +93,7 @@
 	XCTAssertEqual(get_next_line(-10000, &line), -1);
 
 	/* Not opened fd */
+	close(42);
 	XCTAssertEqual(get_next_line(42, &line), -1);
 }
 
@@ -99,21 +121,21 @@
 	/* Read new line */
 	gnl_ret = get_next_line(p[0], &line);
 	XCTAssertEqual(gnl_ret, 1);
-	if (!(line == NULL || *line == '\0')) {
+	if (line != NULL && *line) {
 		XCTFail();
 	}
 
 	/* Read again, but meet EOF */
 	gnl_ret = get_next_line(p[0], &line);
 	XCTAssertEqual(gnl_ret, 0);
-	if (!(line == NULL || *line == '\0')) {
+	if (line != NULL && *line) {
 		XCTFail();
 	}
 
 	/* Let's do it once again */
 	gnl_ret = get_next_line(p[0], &line);
 	XCTAssertEqual(gnl_ret, 0);
-	if (!(line == NULL || *line == '\0')) {
+	if (line != NULL && *line) {
 		XCTFail();
 	}
 }
@@ -179,8 +201,8 @@
  */
 - (void)testFiledescriptorsNegative {
 
-	XCTAssertEqual(get_next_line(-99, nil), -1, "Mauvais retour : devrait retourné \"-1\"");
-	XCTAssertEqual(get_next_line(-1, nil), -1, "Mauvais retour : devrait retourné \"-1\"");
+	XCTAssertEqual(get_next_line(-99, NULL), -1, "Mauvais retour : devrait retourné \"-1\"");
+	XCTAssertEqual(get_next_line(-1, NULL), -1, "Mauvais retour : devrait retourné \"-1\"");
 
 }
 
@@ -240,7 +262,7 @@
 
 }
 
-- (void)testgnl7_1 {
+- (void)test_gnl7_1 {
 
 	char		*line;
 	int			fd;
@@ -248,7 +270,7 @@
 	int			count_lines;
 	int			errors;
 
-	fd = open("gnl7_1.txt", O_RDONLY);
+	fd = open("TestFiles/gnl7_1.txt", O_RDONLY);
 	if (fd > 2)
 	{
 		count_lines = 0;
@@ -266,7 +288,75 @@
 		XCTAssertEqual(count_lines, 1);
 		XCTAssertEqual(errors, 0);
 	}
+}
 
+- (void)test_gnl7_2 {
+
+	char		*line;
+	int			fd;
+	int			ret;
+	int			count_lines;
+	char		*filename;
+	int			errors;
+
+	filename = "TestFiles/gnl7_2.txt";
+	fd = open(filename, O_RDONLY);
+	if (fd > 2)
+	{
+		count_lines = 0;
+		errors = 0;
+		line = NULL;
+		while ((ret = get_next_line(fd, &line)) > 0)
+		{
+			if (count_lines == 0 && strcmp(line, "1234567") != 0)
+				errors++;
+			if (count_lines == 1 && strcmp(line, "abcdefgh") != 0)
+				errors++;
+			count_lines++;
+			if (count_lines > 50)
+				break ;
+		}
+		close(fd);
+		XCTAssertEqual(count_lines, 2, "-> must have returned '1' twice instead of %d time(s)\n", count_lines);
+		XCTAssertEqual(0, errors,"-> must have read \"1234567\" and \"abcdefgh\"\n");
+		if (errors > 0)
+			printf("-> must have read \"1234567\" and \"abcdefgh\"\n");
+		if (count_lines == 2 && errors == 0)
+			printf("OK\n");
+	}
+	else
+		printf("An error occured while opening file %s\n", filename);
+
+}
+
+- (void)test_test_large_file {
+	char *line;
+	int fd;
+	int fd2;
+	int fd3;
+	int	diff_file_size;
+
+	system("mkdir -p sandbox");
+	system("openssl rand -out sandbox/large_file.txt -base64 $((50 * 1000 * 3/4)) 2> /dev/null");
+
+	fd = open("sandbox/large_file.txt", O_RDONLY);
+	fd2 = open("sandbox/large_file.txt.mine", O_CREAT | O_RDWR | O_TRUNC, 0755);
+
+	while (get_next_line(fd, &line) == 1)
+	{
+		write(fd2, line, strlen(line));
+		write(fd2, "\n", 1);
+	}
+
+	close(fd);
+	close(fd2);
+
+	system("diff sandbox/large_file.txt sandbox/large_file.txt.mine > sandbox/large_file.diff");
+	fd3 = open("sandbox/large_file.diff", O_RDONLY);
+	diff_file_size = read(fd3, NULL, 10);
+	close(fd3);
+
+	XCTAssertEqual(diff_file_size, 0);
 }
 
 - (void)testClosenFileDescriptor {
@@ -274,9 +364,7 @@
 	char *line = "Marcus";
 	int test_fd = 42;
 
-
 	close(test_fd);
-
 
 	XCTAssertEqual(get_next_line(test_fd, &line), read(test_fd, &line, BUFF_SIZE));
 }
@@ -307,21 +395,22 @@
 
 	char *line = NULL;
 	int fdA = open(fileName[1], O_RDONLY);
-	int fdB = open(fileName[0], O_RDONLY);
+	int fdB = open(fileName[2], O_RDONLY);
 
 	NSString *textA = [[NSString alloc] initWithContentsOfFile:[NSString stringWithCString:fileName[1] encoding:NSUTF8StringEncoding] encoding: NSUTF8StringEncoding error:nil];
+	NSString *textB = [[NSString alloc] initWithContentsOfFile:[NSString stringWithCString:fileName[2] encoding:NSUTF8StringEncoding] encoding: NSUTF8StringEncoding error:nil];
 	NSArray *linesA = [textA componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-	NSArray *linesB = [textA componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+	NSArray *linesB = [textB componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 
 	get_next_line(fdA, &line);
 	XCTAssertEqualObjects([NSString stringWithUTF8String:line], linesA[0]);
 	if (line)
-	free(line);
+		free(line);
 
 	get_next_line(fdB, &line);
 	XCTAssertEqualObjects([NSString stringWithUTF8String:line], linesB[0]);
-//	if (line)
-//		free(line);
+	if (line)
+		free(line);
 
 	get_next_line(fdA, &line);
 	XCTAssertEqualObjects([NSString stringWithUTF8String:line], linesA[1]);
@@ -404,7 +493,7 @@
 
 }
 
-- (void)testfew_lines_of_16 {
+- (void)test_few_lines_of_16 {
 	char 	*line;
 	int		out;
 	int		p[2];
@@ -450,7 +539,7 @@
 	XCTAssertEqual(ret, 0);
 }
 
-- (void)testline_without_nl {
+- (void)test_line_without_nl {
 	char 	*line;
 	int		out;
 	int		p[2];
@@ -468,6 +557,33 @@
 	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"abcd");
 }
 
+- (void)test_medium_string {
+	char 	*line;
+	int		out;
+	int		p[2];
+	char 	*str;
+	int		gnl_ret;
+
+	str = (char *)malloc(1000 * 1000);
+	*str = '\0';
+	strcat(str, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in leo dignissim, gravida leo id, imperdiet urna. Aliquam magna nunc, maximus quis eleifend et, scelerisque non dolor. Suspendisse augue augue, tempus");
+	strcat(str, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in leo dignissim, gravida leo id, imperdiet urna. Aliquam magna nunc, maximus quis eleifend et, scelerisque non dolor. Suspendisse augue augue, tem pus");
+	strcat(str, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in leo dignissim, gravida leo id, imperdiet urna. Aliquam magna nunc, maximus quis eleifend et, scelerisque non dolor. Suspendisse augue augue, tempus");
+	out = dup(1);
+	pipe(p);
+	dup2(p[1], 1);
+
+	write(1, str, strlen(str));
+	close(p[1]);
+	dup2(out, 1);
+	gnl_ret = get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:str], [NSString stringWithUTF8String:line]);
+
+	if (!(gnl_ret == 0 || gnl_ret == 1)) {
+		XCTFail();
+	}
+}
+
 - (void)testPerformanceManRsync {
     // This is an example of a performance test case.
 	int fd = open(fileName[2], O_RDONLY);
@@ -479,7 +595,6 @@
 		while (get_next_line(fd, p_line))
 		{
 			if (*p_line){
-
 				free(*p_line);
 			}
 

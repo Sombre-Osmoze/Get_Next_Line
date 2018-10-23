@@ -1,1 +1,29 @@
+•	Founded application company made for conversational (chat bot) coupons)
+
+•	Established and maintained KPIs, P&L, SOPs, and product timelines.
+
+
+•	Directed engineers in creating ROR, Swift, Python, and Objective C applications.
+
+
+
+•	Generated assets for lead engineers.
+
+
+
+
+•	Researched and developed products; optimized UX/UI.
+
+
+
+
+
+•	Generated leads; created sales strategy and sales timelines.
+
+
+
+
+
+
+•	Spearheaded conversion from Parse to Swift.
 

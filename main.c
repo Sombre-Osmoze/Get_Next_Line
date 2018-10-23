@@ -32,8 +32,8 @@ int main(int argc, char *argv[])
 		fd[0] = 1;
 
 	do {
-//		if (argv[i + 1])
-//			printf("Fichier : %s\n", argv[i + 1]);
+		if (argv[i + 1])
+			printf("Fichier : %s\n", argv[i + 1]);
 
 		while (get_next_line(fd[i], &line))
 		{
@@ -42,7 +42,6 @@ int main(int argc, char *argv[])
 				free(line);
 //				sleep(3);
 			}
-
 		}
 		i++;
 	} while (i + 1 < argc);

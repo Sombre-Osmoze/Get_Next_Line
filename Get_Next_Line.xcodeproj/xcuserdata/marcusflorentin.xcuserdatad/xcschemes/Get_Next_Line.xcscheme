@@ -40,10 +40,22 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      enableAddressSanitizer = "YES"
+      enableASanStackUseAfterReturn = "YES"
+      enableUBSanitizer = "YES"
       disableMainThreadChecker = "YES"
-      codeCoverageEnabled = "YES"
       shouldUseLaunchSchemeArgsEnv = "NO">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ED012BE520BE3424004DA2C3"
+               BuildableName = "FunctionTests.xctest"
+               BlueprintName = "FunctionTests"
+               ReferencedContainer = "container:../libft/ft.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
          <TestableReference
             skipped = "NO"
             parallelizable = "YES"
@@ -57,7 +69,19 @@
             </BuildableReference>
             <SkippedTests>
                <Test
+                  Identifier = "GNLTest/testGNL">
+               </Test>
+               <Test
+                  Identifier = "GNLTest/testMultiFileDescriptor">
+               </Test>
+               <Test
                   Identifier = "GNLTest/testPerformanceExample">
+               </Test>
+               <Test
+                  Identifier = "GNLTest/testPerformanceManRsync">
+               </Test>
+               <Test
+                  Identifier = "GNLTest/test_error_handling">
                </Test>
             </SkippedTests>
          </TestableReference>
@@ -69,7 +93,9 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      enableAddressSanitizer = "YES"
       enableASanStackUseAfterReturn = "YES"
+      enableUBSanitizer = "YES"
       disableMainThreadChecker = "YES"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
