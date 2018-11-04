@@ -13,7 +13,7 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# define BUFF_SIZE 367367
+# define BUFF_SIZE 125
 
 # include <unistd.h>
 # include <stdlib.h>
