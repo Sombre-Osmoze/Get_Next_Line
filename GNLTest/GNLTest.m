@@ -359,6 +359,24 @@
 	XCTAssertEqual(diff_file_size, 0);
 }
 
+- (void)test_line_without_nl {
+	char 	*line;
+	int		out;
+	int		p[2];
+	int		fd;
+
+	out = dup(1);
+	pipe(p);
+
+	fd = 1;
+	dup2(p[1], fd);
+	write(fd, "abcd", 4);
+	close(p[1]);
+	dup2(out, fd);
+	get_next_line(p[0], &line);
+	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"abcd");
+}
+
 - (void)testClosenFileDescriptor {
 
 	char *line = "Marcus";
@@ -416,7 +434,7 @@
 	XCTAssertEqualObjects([NSString stringWithUTF8String:line], linesA[1]);
 	if (line)
 		free(line);
-	
+
 	close(fdA);
 	close(fdB);
 }
@@ -539,23 +557,6 @@
 	XCTAssertEqual(ret, 0);
 }
 
-- (void)test_line_without_nl {
-	char 	*line;
-	int		out;
-	int		p[2];
-	int		fd;
-
-	out = dup(1);
-	pipe(p);
-
-	fd = 1;
-	dup2(p[1], fd);
-	write(fd, "abcd", 4);
-	close(p[1]);
-	dup2(out, fd);
-	get_next_line(p[0], &line);
-	XCTAssertEqualObjects([NSString stringWithUTF8String:line], @"abcd");
-}
 
 - (void)test_medium_string {
 	char 	*line;

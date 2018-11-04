@@ -31,20 +31,21 @@ static long	ft_stock_data(int fd, char *rest, t_ctrl **ctrl, long i[3])
 	}
 	return (-1);
 }
-
+#include <stdio.h>
 static long	ft_read_line(const int fd, char **line, t_ctrl **ctrl, long lg)
 {
 	long			i[3];
 	char			tmp[BUFF_SIZE + 1];
 	char			*buff;
 
-	if (lg == -1 || !ctrl)
+	if (lg == -1 || !ctrl || !*ctrl)
 		return (0);
 	ft_longset(i, 0, 3);
-	i[1] = -1; 	i[2] = lg;
+	i[1] = -1;
+	i[2] = lg;
 	while (i[1] == -1 && (i[0] = read(fd, tmp, BUFF_SIZE)) > 0)
 	{
-		i[1] = (long)ft_memichr(tmp, '\n', BUFF_SIZE);
+		i[1] = (long)ft_memichr(tmp, '\n', i[0]);
 		buff = ft_strnjoin(*line, i[2], tmp, i[1] == -1 ? *i : i[1]);
 		if (*line)
 			free(*line);
@@ -71,7 +72,7 @@ static long	ft_get_buff(const int *fd, char **line, t_ctrl *cl, long *rest)
 		lim = ft_memichr(content, '\n', size);
 		*line = ft_strndup(content, lim != (size_t)-1 ? lim : size);
 		ref[1] += lim + 1;
-		if (lim == (size_t)-1 || lim + 1 == size)
+		if (lim == (size_t)-1 || lim + 1 >= size)
 			ft_rm_item(cl, cl->last_ac->row);
 		if (lim == (size_t)-1)
 			*rest = size;
@@ -103,9 +104,8 @@ int			get_next_line(const int fd, char **line)
 		res = ((int)(ft_get_buff(&fd, line, ctrl, &res) | ft_read_line(fd, line, &ctrl, res)));
 		if (res >= 1)
 			return (1);
-		else
+		else 
 			return ((int)res);
 	}
-	else
-		return (-1);
+	return (-1);
 }
